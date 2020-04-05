@@ -1,4 +1,4 @@
-import { getTokenPending, getTokenFailure, getTokenSuccess } from '../actions';
+import { getTokenPending, getTokenFailure, getTokenSuccess, updateUser } from '../actions';
 import { getTokenAPI } from "../api";
 
 export const getToken = (email, password) => async (dispatch) => {
@@ -6,10 +6,11 @@ export const getToken = (email, password) => async (dispatch) => {
     dispatch(getTokenPending());
 
     const response = await getTokenAPI(email, password);
-    const { token } = await response.json();
+    const { result: { token, user } } = await response.json();
 
     if (token) {
       dispatch(getTokenSuccess());
+      dispatch(updateUser(user));
     } else {
       dispatch(getTokenFailure());
     }

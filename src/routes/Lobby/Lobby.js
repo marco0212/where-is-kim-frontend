@@ -9,13 +9,13 @@ export default function Lobby({
 }) {
   const [email, setEmail] = useState('inyeop0212@gmail.com');
   const [password, setPassword] = useState('asdf');
-  const loginHandler = async (e) => {
+  const loginHandler = (e) => {
     e.preventDefault();
     getToken(email, password);
   }
   return (
     <div>
-      <h1>김대리 어딨어?</h1>
+      <h1>Title</h1>
       <p>Your component is responsible for both fetching data and presenting it. There’s nothing “wrong” with this but you miss out on a few benefits of React.
       Reusability
       CommentList can’t be reused unless under the exact same circumstances.
