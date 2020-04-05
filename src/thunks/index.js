@@ -9,6 +9,7 @@ export const getToken = (email, password) => async (dispatch) => {
     const { result: { token, user } } = await response.json();
 
     if (token) {
+      localStorage.setItem('token', token);
       dispatch(getTokenSuccess());
       dispatch(updateUser(user));
     } else {
