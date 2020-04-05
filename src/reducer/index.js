@@ -1,6 +1,6 @@
 import { combineReducers } from "redux";
-import foo from './foo';
+import status from './status';
 
 export default combineReducers({
-  foo
+  status
 });

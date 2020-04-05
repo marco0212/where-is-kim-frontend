@@ -1,16 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import FormField from '../../components/FormField';
+import FormField from '../../components/FormField'
 import Button from '../../components/Button';
 
-export default function Auth({
-  isLogedIn,
-  email,
-  setEmail,
-  password,
-  setPassword,
-  login
+export default function Lobby({
+  isLogin,
+  getToken
 }) {
+  const [email, setEmail] = useState('inyeop0212@gmail.com');
+  const [password, setPassword] = useState('asdf');
+  const loginHandler = async (e) => {
+    e.preventDefault();
+    getToken(email, password);
+  }
   return (
     <div>
       <h1>김대리 어딨어?</h1>
@@ -22,12 +24,12 @@ export default function Auth({
       Our component is opinionated about data structure but has no way of expressing those opinions. This component will break silently if the json endpoint change.</p>
       <div>
         {
-          isLogedIn ? (
+          isLogin ? (
             'LoggedIn'
           ) : (
             <>
               <h3>Login</h3>
-              <form onSubmit={login}>
+              <form onSubmit={loginHandler}>
                 <FormField
                   title="Email"
                   type="email"
