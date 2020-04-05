@@ -1,8 +1,10 @@
 import React from 'react';
 import LoginForm from '../../components/Form/LoginForm';
+import TeamList from '../../components/TeamList/TeamList';
 
 export default function Lobby({
   isLogin,
+  teams,
   getToken
 }) {
   return (
@@ -17,7 +19,7 @@ export default function Lobby({
       <div>
         {
           isLogin ? (
-            'LoggedIn'
+            <TeamList teams={teams} />
           ) : (
             <LoginForm getToken={getToken} />
           )

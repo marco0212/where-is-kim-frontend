@@ -1,6 +1,6 @@
 import React from 'react';
 import { HashRouter, Switch, Redirect, Route } from 'react-router-dom';
-import Lobby from '../../routes/Lobby/Container';
+import Lobby from '../../routes/Lobby/LobbyContainer';
 import Signup from '../../routes/Signup';
 
 
