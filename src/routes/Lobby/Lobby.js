@@ -1,18 +1,10 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import FormField from '../../components/FormField'
-import Button from '../../components/Button';
+import React from 'react';
+import LoginForm from '../../components/Form/LoginForm';
 
 export default function Lobby({
   isLogin,
   getToken
 }) {
-  const [email, setEmail] = useState('inyeop0212@gmail.com');
-  const [password, setPassword] = useState('asdf');
-  const loginHandler = (e) => {
-    e.preventDefault();
-    getToken(email, password);
-  }
   return (
     <div>
       <h1>Title</h1>
@@ -27,29 +19,7 @@ export default function Lobby({
           isLogin ? (
             'LoggedIn'
           ) : (
-            <>
-              <h3>Login</h3>
-              <form onSubmit={loginHandler}>
-                <FormField
-                  title="Email"
-                  type="email"
-                  value={email}
-                  onChange={setEmail}
-                  placeholder="Type your Account Email"
-                />
-                <FormField
-                  title="Password"
-                  type="password"
-                  value={password}
-                  onChange={setPassword}
-                  placeholder="Password"
-                />
-                <p>
-                  <Button text="Login" />
-                  <Link to="/signup">Signup</Link>
-                </p>
-              </form>
-            </>
+            <LoginForm getToken={getToken} />
           )
         }
       </div>
