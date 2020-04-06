@@ -7,10 +7,10 @@ export default function TeamList({ teams }) {
     <Wrapper>
       {teams.length ? (
         teams.map((team) => {
-          const { id, name } = team;
+          const { id, name, displayName } = team;
           return (
             <li key={id}>
-              <Link to="/">{name}</Link>
+              <Link to={`/team/${name}`}>{displayName}</Link>
             </li>
           );
         })
