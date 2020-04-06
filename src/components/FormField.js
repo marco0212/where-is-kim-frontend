@@ -34,7 +34,6 @@ const Wrapper = styled.fieldset`
     width: 100%;
     padding: 0 5px;
     height: 40px;
-    border: 0;
     padding: 0 10px;
   }
 `;

@@ -19,7 +19,7 @@ export default function LoginForm({ onSubmit, email, password }) {
   );
 }
 
-const ButtonWrap = styled.div`
+export const ButtonWrap = styled.div`
   margin-top: 30px;
   display: flex;
   justify-content: space-between;
