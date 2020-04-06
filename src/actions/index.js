@@ -6,6 +6,9 @@ import {
   SIGNUP_PENDING,
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE,
+  REGISTER_TEAM_PENDING,
+  REGISTER_TEAM_SUCCESS,
+  REGISTER_TEAM_FAILURE,
 } from "../constants";
 
 export const getTokenPending = () => ({ type: GET_TOKEN_PENDING });
@@ -17,3 +20,7 @@ export const updateUser = (user) => ({ type: UPDATE_USER, payload: user });
 export const signupPending = () => ({ type: SIGNUP_PENDING });
 export const signupSuccess = () => ({ type: SIGNUP_SUCCESS });
 export const signupFailure = () => ({ type: SIGNUP_FAILURE });
+
+export const registerTeamPending = () => ({ type: REGISTER_TEAM_PENDING });
+export const registerTeamSuccess = () => ({ type: REGISTER_TEAM_SUCCESS });
+export const registerTeamFailure = () => ({ type: REGISTER_TEAM_FAILURE });

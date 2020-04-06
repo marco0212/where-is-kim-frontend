@@ -6,8 +6,11 @@ import {
   signupPending,
   signupFailure,
   signupSuccess,
+  registerTeamPending,
+  registerTeamSuccess,
+  registerTeamFailure,
 } from "../actions";
-import { getTokenAPI, signupAPI } from "../api";
+import { getTokenAPI, signupAPI, registerTeamAPI } from "../api";
 
 export const getToken = (email, password) => async (dispatch) => {
   try {
@@ -40,5 +43,31 @@ export const signup = (username, email, password) => async (dispatch) => {
     dispatch(signupSuccess());
   } catch {
     dispatch(signupFailure());
+  }
+};
+
+export const registerTeam = (
+  teamName,
+  createdBy,
+  teamLocation,
+  workOnTime,
+  workOffTime
+) => async (dispatch) => {
+  try {
+    dispatch(registerTeamPending());
+
+    const response = await registerTeamAPI(
+      teamName,
+      createdBy,
+      teamLocation,
+      workOnTime,
+      workOffTime
+    );
+
+    await response.json();
+
+    dispatch(registerTeamSuccess());
+  } catch {
+    dispatch(registerTeamFailure());
   }
 };

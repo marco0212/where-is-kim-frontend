@@ -5,6 +5,9 @@ import {
   SIGNUP_PENDING,
   SIGNUP_SUCCESS,
   SIGNUP_FAILURE,
+  REGISTER_TEAM_PENDING,
+  REGISTER_TEAM_FAILURE,
+  REGISTER_TEAM_SUCCESS,
 } from "../constants";
 
 const initialState = {
@@ -45,7 +48,24 @@ export default function (state = initialState, action) {
         ...state,
         isLogin: false,
       };
+    case REGISTER_TEAM_PENDING:
+      return {
+        ...state,
+        isLoading: true,
+      };
+    case REGISTER_TEAM_SUCCESS:
+      return {
+        ...state,
+        isLoading: false,
+      };
+    case REGISTER_TEAM_FAILURE:
+      return {
+        ...state,
+        isLogin: false,
+      };
     default:
-      return state;
+      return {
+        ...state,
+      };
   }
 }
