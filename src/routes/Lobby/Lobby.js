@@ -3,6 +3,7 @@ import styled from "styled-components";
 import LoginForm from "../../components/LoginForm/Container";
 import TeamList from "../../components/TeamList";
 import { ButtonWrap } from "../../components/LoginForm/LoginForm";
+import { Link } from "react-router-dom";
 
 export default function Lobby({ isLogin, teams, login }) {
   return (
@@ -21,7 +22,7 @@ export default function Lobby({ isLogin, teams, login }) {
             <h3>Your Teams</h3>
             <TeamList teams={teams} />
             <TeamButtonWrap>
-              <button>Create Team</button>
+              <Link to="/team/new">Create Team</Link>
               <button>Logout</button>
             </TeamButtonWrap>
           </>

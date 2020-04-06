@@ -38,7 +38,7 @@ export default function Signup({ onSubmit, username, email, password }) {
   );
 }
 
-const Wrapper = styled.div`
+export const Wrapper = styled.div`
   width: 600px;
   height: 100%;
   margin: auto;
