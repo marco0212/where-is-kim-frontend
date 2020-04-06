@@ -5,17 +5,14 @@ import styled from "styled-components";
 
 export default function LoginForm({ onSubmit, email, password }) {
   return (
-    <>
-      <h3>Login</h3>
-      <form onSubmit={onSubmit}>
-        <FormField title="Email" type="email" controller={email} />
-        <FormField title="Password" type="password" controller={password} />
-        <ButtonWrap>
-          <button>Login</button>
-          <Link to="/signup">Signup</Link>
-        </ButtonWrap>
-      </form>
-    </>
+    <form onSubmit={onSubmit}>
+      <FormField title="Email" type="email" controller={email} />
+      <FormField title="Password" type="password" controller={password} />
+      <ButtonWrap>
+        <button>Login</button>
+        <Link to="/signup">Signup</Link>
+      </ButtonWrap>
+    </form>
   );
 }
 
@@ -38,6 +35,6 @@ export const ButtonWrap = styled.div`
     background-color: #4cd3c2;
   }
   & a {
-    background-color: #b7efcd;
+    background-color: #ea6227;
   }
 `;

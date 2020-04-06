@@ -1,8 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 import LoginForm from "../../components/LoginForm/Container";
+import TeamList from "../../components/TeamList";
+import { ButtonWrap } from "../../components/LoginForm/LoginForm";
 
-export default function Lobby({ isLogin, login }) {
+export default function Lobby({ isLogin, teams, login }) {
   return (
     <Wrapper>
       <WelcomeBox>
@@ -13,7 +15,23 @@ export default function Lobby({ isLogin, login }) {
           a local CSS class and therefore isolated from other components
         </p>
       </WelcomeBox>
-      <LoginBox>{isLogin ? "Team List" : <LoginForm login={login} />}</LoginBox>
+      <LoginBox>
+        {isLogin ? (
+          <>
+            <h3>Your Teams</h3>
+            <TeamList teams={teams} />
+            <TeamButtonWrap>
+              <button>Create Team</button>
+              <button>Logout</button>
+            </TeamButtonWrap>
+          </>
+        ) : (
+          <>
+            <h3>Login</h3>
+            <LoginForm login={login} />
+          </>
+        )}
+      </LoginBox>
     </Wrapper>
   );
 }
@@ -29,9 +47,17 @@ const WelcomeBox = styled.div`
   margin-right: 30px;
 `;
 const LoginBox = styled.div`
+  display: flex;
+  flex-direction: column;
   flex: 1;
   background-color: #323232;
   color: #eee;
+  height: 320px;
   padding: 15px 30px;
   border-radius: 4px;
+`;
+const TeamButtonWrap = styled(ButtonWrap)`
+  & button:last-child {
+    background-color: #dd2c00;
+  }
 `;
