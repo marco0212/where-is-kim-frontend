@@ -4,7 +4,7 @@ import { getToken } from "../../thunks";
 
 const mapStateToProps = (state) => ({
   isLogin: state.status.isLogin,
-  teams: state.user.allTeams.map((team) => state.user.teamById[team.id]),
+  teams: state.user.allIds.map((id) => state.user.teamById[id]),
 });
 const mapDispatchToProps = (dispatch) => ({
   login: (email, password) => dispatch(getToken(email, password)),

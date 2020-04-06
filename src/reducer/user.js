@@ -4,7 +4,7 @@ const initialState = {
   id: "",
   username: "",
   email: "",
-  allTeams: [],
+  allIds: [],
   teamById: {},
 };
 
@@ -12,7 +12,7 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case UPDATE_USER:
       const { _id, username, email, teams } = action.payload;
-      const allTeams = teams.map((team) => team._id);
+      const allIds = teams.map((team) => team._id);
       const teamById = teams.reduce((acc, team) => {
         acc[team._id] = team;
         return acc;
@@ -23,7 +23,7 @@ export default function (state = initialState, action) {
         id: _id,
         username,
         email,
-        allTeams,
+        allIds,
         teamById,
       };
 
