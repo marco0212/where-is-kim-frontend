@@ -20,17 +20,16 @@ export default function LoginForm({ onSubmit, email, password }) {
   );
 }
 
-const ButtonWrapper = styled.div`
+export const ButtonWrapper = styled.div`
   margin-top: 21px;
   display: flex;
   & button,
   a {
+    flex: 1;
     text-align: center;
     border: 1px solid #eee;
     border-radius: 4px;
     height: 35px;
     line-height: 33px;
-    padding: 0 20px;
-    margin-right: 15px;
   }
 `;

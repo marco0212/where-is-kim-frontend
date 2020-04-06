@@ -1,7 +1,7 @@
 import React from "react";
 import { Switch, Route, Redirect } from "react-router-dom";
 import Lobby from "./Lobby/Container";
-import Signup from "./Signup";
+import Signup from "./Signup/Container";
 import TeamRoom from "./TeamRoom";
 
 const BeforeLogin = () => {
