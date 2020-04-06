@@ -3,8 +3,8 @@ import LoginForm from "./LoginForm";
 import useInput from "../../hooks/useInput";
 
 export default function LoginFormContainer({ login }) {
-  const email = useInput("inyeop0212@gmail.com");
-  const password = useInput("asdf");
+  const email = useInput("");
+  const password = useInput("");
   const onSubmit = (e) => {
     e.preventDefault();
     login(email.value, password.value);

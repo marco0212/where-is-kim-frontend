@@ -2,14 +2,15 @@ import React from "react";
 import { connect } from "react-redux";
 import Signup from "./Signup";
 import useInput from "../../hooks/useInput";
+import { signup, getToken } from "../../thunks";
 
-function SignupContainer() {
+function SignupContainer({ signup, history }) {
   const username = useInput("");
   const email = useInput("");
   const password = useInput("");
   const onSubmit = (e) => {
     e.preventDefault();
-    console.log(username.value, email.value, password.value);
+    signup(username.value, email.value, password.value);
   };
 
   return (
@@ -23,6 +24,9 @@ function SignupContainer() {
 }
 
 const mapStateToProps = (state) => ({});
-const mapDispatchToProps = (dispatch) => ({});
+const mapDispatchToProps = (dispatch) => ({
+  signup: (username, email, password) =>
+    dispatch(signup(username, email, password)),
+});
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer);

@@ -1,11 +1,22 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function FormField({ title, type, controller }) {
+export default function FormField({
+  title,
+  type,
+  controller,
+  placeholder,
+  required = true,
+}) {
   return (
     <Wrapper>
       <legend>{title}</legend>
-      <input type={type} {...controller} />
+      <input
+        type={type}
+        {...controller}
+        placeholder={placeholder}
+        required={required}
+      />
     </Wrapper>
   );
 }
@@ -23,5 +34,7 @@ const Wrapper = styled.fieldset`
     width: 100%;
     padding: 0 5px;
     height: 40px;
+    border: 0;
+    padding: 0 10px;
   }
 `;

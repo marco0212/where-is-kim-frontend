@@ -10,39 +10,28 @@ export default function Lobby({ isLogin, login }) {
         <p>
           A helper function to generate a special StyledComponent that handles
           global styles. Normally, styled components are automatically scoped to
-          a local CSS class and therefore isolated from other components. In the
-          case of createGlobalStyle, this limitation is removed and things like
-          CSS resets or base stylesheets can be applied. ARGUMENTS DESCRIPTION
-          1. TaggedTemplateLiteral A tagged template literal with your CSS and
-          interpolations. Returns a StyledComponent that does not accept
-          children. Place it at the top of your React tree and the global styles
-          will be injected when the component is "rendered".
+          a local CSS class and therefore isolated from other components
         </p>
       </WelcomeBox>
       <LoginBox>{isLogin ? "Team List" : <LoginForm login={login} />}</LoginBox>
     </Wrapper>
   );
 }
-
 const Wrapper = styled.div`
-  max-width: 1200px;
-  width: calc(100% - 100px);
-  margin: auto;
   display: flex;
-  height: 100%;
+  margin: 0 auto;
   align-items: center;
-  & > div {
-    flex: 1;
-  }
+  height: 100%;
+  width: 800px;
 `;
 const WelcomeBox = styled.div`
-  margin-right: 50px;
-  & h1 {
-    font-size: 40px;
-  }
+  width: 50%;
+  margin-right: 30px;
 `;
 const LoginBox = styled.div`
-  border: 2px solid #eee;
-  padding: 20px 50px;
-  max-width: 500px;
+  flex: 1;
+  background-color: #323232;
+  color: #eee;
+  padding: 15px 30px;
+  border-radius: 4px;
 `;
