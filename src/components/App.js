@@ -1,6 +1,5 @@
 import React from 'react';
-import Routes from './Routes/RoutesContainer';
 
-export default function App() {
-  return <Routes />;
+export default function App () {
+  return <div>I'm App</div>;
 }
