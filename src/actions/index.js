@@ -22,5 +22,8 @@ export const signupSuccess = () => ({ type: SIGNUP_SUCCESS });
 export const signupFailure = () => ({ type: SIGNUP_FAILURE });
 
 export const registerTeamPending = () => ({ type: REGISTER_TEAM_PENDING });
-export const registerTeamSuccess = () => ({ type: REGISTER_TEAM_SUCCESS });
+export const registerTeamSuccess = (team) => ({
+  type: REGISTER_TEAM_SUCCESS,
+  payload: team,
+});
 export const registerTeamFailure = () => ({ type: REGISTER_TEAM_FAILURE });

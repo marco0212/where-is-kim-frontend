@@ -1,4 +1,4 @@
-import { UPDATE_USER } from "../constants";
+import { UPDATE_USER, REGISTER_TEAM_SUCCESS } from "../constants";
 
 const initialState = {
   id: "",
@@ -52,6 +52,42 @@ export default function (state = initialState, action) {
         allIds,
         teamById,
       };
+
+    case REGISTER_TEAM_SUCCESS: {
+      const {
+        participants,
+        admins,
+        threads,
+        records,
+        _id: id,
+        name,
+        display_name: displayName,
+        created_by: createdBy,
+        location,
+        work_on_time: workOnTime,
+        work_off_time: workOffTime,
+      } = action.payload;
+      return {
+        ...state,
+        allIds: [...state.allIds, id],
+        teamById: {
+          ...state.teamById,
+          [id]: {
+            participants,
+            admins,
+            threads,
+            records,
+            id,
+            name,
+            displayName,
+            createdBy,
+            location,
+            workOnTime,
+            workOffTime,
+          },
+        },
+      };
+    }
 
     default:
       return {

@@ -64,9 +64,9 @@ export const registerTeam = (
       workOffTime
     );
 
-    await response.json();
+    const { result } = await response.json();
 
-    dispatch(registerTeamSuccess());
+    dispatch(registerTeamSuccess(result));
   } catch {
     dispatch(registerTeamFailure());
   }
