@@ -49,7 +49,7 @@ export const signup = (username, email, password) => async (dispatch) => {
 export const registerTeam = (
   teamName,
   createdBy,
-  teamLocation,
+  location,
   workOnTime,
   workOffTime
 ) => async (dispatch) => {
@@ -59,7 +59,7 @@ export const registerTeam = (
     const response = await registerTeamAPI(
       teamName,
       createdBy,
-      teamLocation,
+      location,
       workOnTime,
       workOffTime
     );

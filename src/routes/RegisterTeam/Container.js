@@ -6,7 +6,8 @@ import { registerTeam } from "../../thunks";
 
 function RegisterTeamContainer({ userId, registerTeam }) {
   const teamName = useInput("");
-  const location = useInput("");
+  const latitude = useInput("");
+  const longitude = useInput("");
   const workOnTime = useInput("09:00");
   const workOffTime = useInput("18:00");
   const onSubmit = (e) => {
@@ -15,9 +16,8 @@ function RegisterTeamContainer({ userId, registerTeam }) {
       teamName.value,
       userId,
       {
-        address: "서울시 강남구 어쩌구 저쩌구",
-        latitude: "37.5004249",
-        longitude: "127.0641825",
+        latitude: latitude.value,
+        longitude: longitude.value,
       },
       workOnTime.value,
       workOffTime.value
@@ -27,7 +27,8 @@ function RegisterTeamContainer({ userId, registerTeam }) {
   return (
     <RegisterTeam
       teamName={teamName}
-      location={location}
+      longitude={longitude}
+      latitude={latitude}
       workOnTime={workOnTime}
       workOffTime={workOffTime}
       onSubmit={onSubmit}

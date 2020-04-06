@@ -36,7 +36,7 @@ export const signupAPI = (username, email, password) => {
 export const registerTeamAPI = (
   teamName,
   createdBy,
-  teamLocation,
+  location,
   workOnTime,
   workOffTime
 ) => {
@@ -48,7 +48,7 @@ export const registerTeamAPI = (
     body: JSON.stringify({
       teamName,
       createdBy,
-      teamLocation,
+      location,
       workOnTime,
       workOffTime,
     }),

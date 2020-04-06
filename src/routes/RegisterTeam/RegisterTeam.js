@@ -7,7 +7,8 @@ import { Wrapper } from "../Signup/Signup";
 export default function RegisterTeam({
   onSubmit,
   teamName,
-  location,
+  latitude,
+  longitude,
   workOnTime,
   workOffTime,
 }) {
@@ -23,10 +24,16 @@ export default function RegisterTeam({
             placeholder="Type your team name"
           />
           <FormField
-            title="Location"
+            title="Latitude"
             type="text"
-            controller={location}
-            placeholder="Type team address"
+            controller={latitude}
+            placeholder="Type team address (latitude)"
+          />
+          <FormField
+            title="Longitude"
+            type="text"
+            controller={longitude}
+            placeholder="Type team address (longitude)"
           />
           <FormField title="Work on Time" type="time" controller={workOnTime} />
           <FormField
