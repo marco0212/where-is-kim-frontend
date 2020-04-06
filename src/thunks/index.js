@@ -35,7 +35,7 @@ export const signup = (username, email, password) => async (dispatch) => {
     dispatch(signupPending());
 
     const response = await signupAPI(username, email, password);
-    const result = await response.json();
+    await response.json();
 
     dispatch(signupSuccess());
   } catch {

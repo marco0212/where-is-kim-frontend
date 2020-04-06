@@ -2,9 +2,9 @@ import React from "react";
 import { connect } from "react-redux";
 import Signup from "./Signup";
 import useInput from "../../hooks/useInput";
-import { signup, getToken } from "../../thunks";
+import { signup } from "../../thunks";
 
-function SignupContainer({ signup, history }) {
+function SignupContainer({ signup }) {
   const username = useInput("");
   const email = useInput("");
   const password = useInput("");
