@@ -3,14 +3,11 @@ import {
   getTokenFailure,
   getTokenSuccess,
   initializeUser,
-  signupPending,
-  signupFailure,
-  signupSuccess,
   registerTeamPending,
   registerTeamSuccess,
   registerTeamFailure,
 } from "../actions";
-import { getTokenAPI, signupAPI, registerTeamAPI } from "../api";
+import { getTokenAPI, registerTeamAPI } from "../api";
 
 export const getToken = (email, password) => async (dispatch) => {
   try {
@@ -30,19 +27,6 @@ export const getToken = (email, password) => async (dispatch) => {
     }
   } catch (err) {
     dispatch(getTokenFailure());
-  }
-};
-
-export const signup = (username, email, password) => async (dispatch) => {
-  try {
-    dispatch(signupPending());
-
-    const response = await signupAPI(username, email, password);
-    await response.json();
-
-    dispatch(signupSuccess());
-  } catch {
-    dispatch(signupFailure());
   }
 };
 

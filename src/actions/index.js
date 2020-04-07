@@ -3,9 +3,6 @@ import {
   GET_TOKEN_SUCCESS,
   GET_TOKEN_FAILURE,
   INITIALIZE_USER,
-  SIGNUP_PENDING,
-  SIGNUP_SUCCESS,
-  SIGNUP_FAILURE,
   REGISTER_TEAM_PENDING,
   REGISTER_TEAM_SUCCESS,
   REGISTER_TEAM_FAILURE,
@@ -19,10 +16,6 @@ export const initializeUser = (user) => ({
   type: INITIALIZE_USER,
   payload: user,
 });
-
-export const signupPending = () => ({ type: SIGNUP_PENDING });
-export const signupSuccess = () => ({ type: SIGNUP_SUCCESS });
-export const signupFailure = () => ({ type: SIGNUP_FAILURE });
 
 export const registerTeamPending = () => ({ type: REGISTER_TEAM_PENDING });
 export const registerTeamSuccess = (team) => ({

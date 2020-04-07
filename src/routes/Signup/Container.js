@@ -1,16 +1,25 @@
 import React from "react";
-import { connect } from "react-redux";
 import Signup from "./Signup";
 import useInput from "../../hooks/useInput";
-import { signup } from "../../thunks";
+import { signupAPI } from "../../api";
 
-function SignupContainer({ signup }) {
+export default function SignupContainer({ history }) {
   const username = useInput("");
   const email = useInput("");
   const password = useInput("");
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    signup(username.value, email.value, password.value);
+
+    const response = await signupAPI(
+      username.value,
+      email.value,
+      password.value
+    );
+    const { result } = await response.json();
+
+    if (result === "ok") {
+      history.push("/");
+    }
   };
 
   return (
@@ -22,11 +31,3 @@ function SignupContainer({ signup }) {
     />
   );
 }
-
-const mapStateToProps = (state) => ({});
-const mapDispatchToProps = (dispatch) => ({
-  signup: (username, email, password) =>
-    dispatch(signup(username, email, password)),
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(SignupContainer);
