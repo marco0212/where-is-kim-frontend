@@ -4,12 +4,14 @@ import Lobby from "./Lobby/Container";
 import Signup from "./Signup/Container";
 import TeamRoom from "./TeamRoom";
 import RegisterTeam from "./RegisterTeam/Container";
+import Confirm from "./Confirm";
 
 const BeforeLogin = () => {
   return (
     <Switch>
       <Route exact path="/" component={Lobby} />
       <Route path="/signup" component={Signup} />
+      <Route path="/verify/:token" component={Confirm} />
       <Redirect to="/" />
     </Switch>
   );
