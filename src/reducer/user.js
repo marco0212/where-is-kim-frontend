@@ -1,4 +1,4 @@
-import { INITIALIZE_USER, REGISTER_TEAM_SUCCESS } from "../constants";
+import { INITIALIZE_USER, UPDATE_USER_TEAM } from "../constants";
 
 const initialState = {
   id: "",
@@ -53,7 +53,7 @@ export default function (state = initialState, action) {
         teamById,
       };
 
-    case REGISTER_TEAM_SUCCESS: {
+    case UPDATE_USER_TEAM: {
       const {
         participants,
         admins,

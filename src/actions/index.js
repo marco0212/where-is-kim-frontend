@@ -4,7 +4,7 @@ import {
   GET_TOKEN_FAILURE,
   INITIALIZE_USER,
   REGISTER_TEAM_PENDING,
-  REGISTER_TEAM_SUCCESS,
+  UPDATE_USER_TEAM,
   REGISTER_TEAM_FAILURE,
 } from "../constants";
 
@@ -18,8 +18,8 @@ export const initializeUser = (user) => ({
 });
 
 export const registerTeamPending = () => ({ type: REGISTER_TEAM_PENDING });
-export const registerTeamSuccess = (team) => ({
-  type: REGISTER_TEAM_SUCCESS,
+export const updateUserTeam = (team) => ({
+  type: UPDATE_USER_TEAM,
   payload: team,
 });
 export const registerTeamFailure = () => ({ type: REGISTER_TEAM_FAILURE });

@@ -2,17 +2,19 @@ import React from "react";
 import { connect } from "react-redux";
 import RegisterTeam from "./RegisterTeam";
 import useInput from "../../hooks/useInput";
-import { registerTeam } from "../../thunks";
+import { registerTeamAPI } from "../../api";
+import { updateUserTeam } from "../../actions";
 
-function RegisterTeamContainer({ userId, registerTeam }) {
+function RegisterTeamContainer({ userId, history, updateUserTeam }) {
   const teamName = useInput("");
   const latitude = useInput("");
   const longitude = useInput("");
   const workOnTime = useInput("09:00");
   const workOffTime = useInput("18:00");
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    registerTeam(
+
+    const response = await registerTeamAPI(
       teamName.value,
       userId,
       {
@@ -22,6 +24,13 @@ function RegisterTeamContainer({ userId, registerTeam }) {
       workOnTime.value,
       workOffTime.value
     );
+
+    const { result } = await response.json();
+
+    if (result !== "error") {
+      updateUserTeam(result);
+      history.push("/");
+    }
   };
 
   return (
@@ -40,10 +49,7 @@ const mapStateToProps = (state) => ({
   userId: state.user.id,
 });
 const mapDispatchToProps = (dispatch) => ({
-  registerTeam: (teamName, createdBy, location, workOnTime, workOffTime) =>
-    dispatch(
-      registerTeam(teamName, createdBy, location, workOnTime, workOffTime)
-    ),
+  updateUserTeam: (team) => dispatch(updateUserTeam(team)),
 });
 
 export default connect(
