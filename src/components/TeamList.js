@@ -28,11 +28,14 @@ const Wrapper = styled.ul`
   overflow-y: scroll;
   & li {
     color: #333;
-    font-size: 18px;
-    padding: 5px;
+    font-size: 20px;
+    padding: 8px;
     border-bottom: 1px solid #eee;
     & a {
       display: block;
+    }
+    &:nth-child(even) {
+      background-color: #f1f1f1;
     }
   }
 `;

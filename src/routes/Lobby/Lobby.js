@@ -44,7 +44,7 @@ const Wrapper = styled.div`
   width: 800px;
 `;
 const WelcomeBox = styled.div`
-  width: 50%;
+  width: 45%;
   margin-right: 30px;
 `;
 const LoginBox = styled.div`
