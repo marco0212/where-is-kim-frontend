@@ -1,4 +1,4 @@
-import { UPDATE_USER, REGISTER_TEAM_SUCCESS } from "../constants";
+import { INITIALIZE_USER, REGISTER_TEAM_SUCCESS } from "../constants";
 
 const initialState = {
   id: "",
@@ -10,7 +10,7 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case UPDATE_USER:
+    case INITIALIZE_USER:
       const { _id, username, email, teams } = action.payload;
       const allIds = teams.map((team) => team._id);
       const teamById = teams.reduce((acc, team) => {

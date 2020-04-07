@@ -2,7 +2,7 @@ import {
   getTokenPending,
   getTokenFailure,
   getTokenSuccess,
-  updateUser,
+  initializeUser,
   signupPending,
   signupFailure,
   signupSuccess,
@@ -24,7 +24,7 @@ export const getToken = (email, password) => async (dispatch) => {
     if (token) {
       localStorage.setItem("token", token);
       dispatch(getTokenSuccess());
-      dispatch(updateUser(user));
+      dispatch(initializeUser(user));
     } else {
       dispatch(getTokenFailure());
     }
