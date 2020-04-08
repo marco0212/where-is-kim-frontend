@@ -18,6 +18,7 @@ export default createGlobalStyle`
   }
   img {
     vertical-align: top;
+    max-width: 100%;
   }
   a {
     color: inherit;
