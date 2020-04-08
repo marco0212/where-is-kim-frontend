@@ -16,7 +16,7 @@ export default createGlobalStyle`
   html, body, #root {
     height: 100%;
   }
-  img {
+  svg, img {
     vertical-align: top;
     max-width: 100%;
   }

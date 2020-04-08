@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { FaBars, FaTimes } from "react-icons/fa";
+import { Link } from "react-router-dom";
 
 export default function TeamRoom() {
   return (
@@ -26,7 +28,9 @@ export default function TeamRoom() {
       <Main>
         <MainHeader>
           <h4>Threads</h4>
-          <button>BAR</button>
+          <MainHeaderButton for="side-nav">
+            <FaBars />
+          </MainHeaderButton>
         </MainHeader>
         <ThreadList>
           <ThreadDivider>
@@ -55,6 +59,22 @@ export default function TeamRoom() {
           </ThreadItem>
         </ThreadList>
       </Main>
+      <NavController type="checkbox" id="side-nav" />
+      <Overlay for="side-nav" />
+      <NavAside>
+        <NavHeaderButtonWrap>
+          <MainHeaderButton for="side-nav">
+            <FaTimes />
+          </MainHeaderButton>
+        </NavHeaderButtonWrap>
+        <ul>
+          <li>
+            <Link>Lobby</Link>
+            <Link>Record on</Link>
+            <Link>Admin</Link>
+          </li>
+        </ul>
+      </NavAside>
     </Wrapper>
   );
 }
@@ -67,11 +87,36 @@ const Aside = styled.aside`
   width: 260px;
   position: fixed;
   top: 0;
+  left: 0;
   bottom: 0;
   flex-direction: column;
+  color: #f1f1f1;
   padding: 30px 0 30px 30px;
   background-color: #3f0e40;
-  color: #f1f1f1;
+`;
+const NavController = styled.input`
+  display: none;
+  &:checked + label {
+    display: block;
+  }
+  &:checked + label + aside {
+    right: 0;
+  }
+`;
+const NavAside = styled(Aside)`
+  left: auto;
+  padding: 15px 30px;
+  right: -260px;
+  transition: all 0.3s;
+`;
+const Overlay = styled.label`
+  display: none;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.2);
 `;
 const Main = styled.main`
   margin-left: 260px;
@@ -89,6 +134,15 @@ const MainHeader = styled.header`
     font-size: 24px;
     font-weight: bold;
   }
+`;
+const MainHeaderButton = styled.label`
+  display: inline-block;
+  & svg {
+    font-size: 35px;
+  }
+`;
+const NavHeaderButtonWrap = styled.div`
+  text-align: right;
 `;
 const ThreadList = styled.div`
   flex: 1;
