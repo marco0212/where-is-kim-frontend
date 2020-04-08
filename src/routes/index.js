@@ -12,7 +12,6 @@ const BeforeLogin = () => {
       <Route exact path="/" component={Lobby} />
       <Route path="/signup" component={Signup} />
       <Route path="/verify/:token" component={Confirm} />
-      <Route path="/team/:name" component={Team} />
       <Redirect to="/" />
     </Switch>
   );

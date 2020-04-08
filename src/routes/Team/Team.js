@@ -4,11 +4,7 @@ import TeamAside from "../../components/TeamAside";
 import TeamHeader from "../../components/TeamHeader";
 import { Switch, Route } from "react-router-dom";
 
-export default function Team({
-  name = "Vanilla coding",
-  profilePic = "https://dummyimage.com/600x600/000/fff",
-  participants = [],
-}) {
+export default function Team({ name, profilePic, participants, threads }) {
   return (
     <Wrapper>
       <TeamAside

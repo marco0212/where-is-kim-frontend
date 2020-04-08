@@ -3,6 +3,8 @@ const GET_TOKEN = `${WHERE_IS_KIM_BACK_URL}/api/auth/login`;
 const SIGNUP = `${WHERE_IS_KIM_BACK_URL}/api/auth/signup`;
 const REGISTER_TEAM = `${WHERE_IS_KIM_BACK_URL}/api/team/new`;
 const VERIFY_USER = `${WHERE_IS_KIM_BACK_URL}/api/team/verify`;
+const getTeamJoinUrl = (name) =>
+  `${WHERE_IS_KIM_BACK_URL}/api/team/${name}/join`;
 
 const JWT_TEST = `${WHERE_IS_KIM_BACK_URL}/`;
 
@@ -61,6 +63,20 @@ export const registerTeamAPI = (
 export const verifyAPI = (token) => {
   const options = { method: "POST" };
   return fetch(`${VERIFY_USER}?token=${token}`, options);
+};
+
+export const joinTeamAPI = (teamName, userId) => {
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      userId,
+    }),
+  };
+
+  return fetch(getTeamJoinUrl(teamName), options);
 };
 
 export const testAPI = (token) => {

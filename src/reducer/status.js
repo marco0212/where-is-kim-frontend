@@ -7,6 +7,7 @@ import {
 const initialState = {
   isLogin: false,
   isLoading: false,
+  level: "",
 };
 
 export default function (state = initialState, action) {
