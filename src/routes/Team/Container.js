@@ -2,8 +2,9 @@ import React from "react";
 import Team from "./Team";
 import { connect } from "react-redux";
 
-function TeamContainer() {
+function TeamContainer({ userId, match }) {
   return <Team />;
 }
 
-export default connect()(TeamContainer);
+const mapStateToProps = (state) => ({});
+export default connect(mapStateToProps)(TeamContainer);
