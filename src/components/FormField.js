@@ -7,14 +7,16 @@ export default function FormField({
   controller,
   placeholder,
   required = true,
+  onKeyPress,
 }) {
   return (
     <Wrapper>
-      <legend>{title}</legend>
+      {title && <legend>{title}</legend>}
       <input
         type={type}
         {...controller}
         placeholder={placeholder}
+        onKeyPress={onKeyPress}
         required={required}
       />
     </Wrapper>

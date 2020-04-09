@@ -5,6 +5,10 @@ const REGISTER_TEAM = `${WHERE_IS_KIM_BACK_URL}/api/team/new`;
 const VERIFY_USER = `${WHERE_IS_KIM_BACK_URL}/api/team/verify`;
 const getTeamJoinUrl = (name) =>
   `${WHERE_IS_KIM_BACK_URL}/api/team/${name}/join`;
+const getToggleLikeThreadUrl = (id) =>
+  `${WHERE_IS_KIM_BACK_URL}/api/thread/${id}/like`;
+const getCommentThreadUrl = (id) =>
+  `${WHERE_IS_KIM_BACK_URL}/api/thread/${id}/comment`;
 
 const JWT_TEST = `${WHERE_IS_KIM_BACK_URL}/`;
 
@@ -77,6 +81,20 @@ export const joinTeamAPI = (teamName, userId) => {
   };
 
   return fetch(getTeamJoinUrl(teamName), options);
+};
+
+export const toggleLikeAPI = (threadId, userId) => {
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      userId,
+    }),
+  };
+
+  return fetch(getToggleLikeThreadUrl(threadId), options);
 };
 
 export const testAPI = (token) => {
