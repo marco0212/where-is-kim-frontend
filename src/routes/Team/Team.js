@@ -3,13 +3,30 @@ import styled from "styled-components";
 import TeamAside from "../../components/TeamAside";
 import TeamHeader from "../../components/TeamHeader";
 import { Switch, Route } from "react-router-dom";
+import Threads from "../Threads";
+import ThreadList from "../../components/ThreadList/ThreadList";
 
 export default function Team({
   displayName,
   profilePic,
   participants,
-  threads,
+  //threads,
 }) {
+  const threads = [
+    {
+      date: "2020-04-09",
+      items: [
+        {
+          id: "asdf",
+          text: "Jeong 출근 완료",
+          likes: [],
+          comments: [],
+          createdBy: "Jeong",
+          createdAt: "2020-04-09T05:14:31.826Z",
+        },
+      ],
+    },
+  ];
   return (
     <Wrapper>
       <TeamAside
@@ -21,7 +38,7 @@ export default function Team({
       <Main>
         <Switch>
           <Route exact path="/team/:name">
-            Threads
+            <Threads threads={threads} />
           </Route>
           <Route path="/team/:name/record">Record</Route>
           <Route path="/team/:name/admin">Admin route</Route>
