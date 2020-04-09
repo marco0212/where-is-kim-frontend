@@ -42,8 +42,8 @@ function TeamContainer({
 const mapStateToProps = (state) => ({
   userId: state.user.id,
   displayName: state.team.displayName,
-  threads: state.team.allThreadId.map((id) => state.team.threadById[id]),
-  participants: state.team.allpartsId.map((id) => state.team.partById[id]),
+  threads: state.team.allThreadIds.map((id) => state.team.threadById[id]),
+  participants: state.team.allpartIds.map((id) => state.team.partById[id]),
 });
 const mapDispatchToProps = (dispatch) => ({
   initializeTeam: (team) => dispatch(initializeTeam(team)),
