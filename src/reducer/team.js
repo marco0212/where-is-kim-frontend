@@ -1,7 +1,7 @@
 import { INITIALIZE_TEAM } from "../constants";
 
 const initialState = {
-  name: "",
+  displayName: "",
   allpartsId: [],
   partById: {},
   allThreadId: [],
@@ -11,7 +11,11 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case INITIALIZE_TEAM:
-      const { threads, participants, display_name: name } = action.payload;
+      const {
+        threads,
+        participants,
+        display_name: displayName,
+      } = action.payload;
       const allpartsId = participants.map((part) => part._id);
       const partById = allByCreator(participants);
       const allThreadId = threads.map((thread) => thread._id);
@@ -19,7 +23,7 @@ export default function (state = initialState, action) {
 
       return {
         ...state,
-        name,
+        displayName,
         allpartsId,
         partById,
         allThreadId,

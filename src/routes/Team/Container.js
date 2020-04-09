@@ -6,6 +6,7 @@ import { initializeTeam } from "../../actions";
 
 function TeamContainer({
   userId,
+  displayName,
   threads,
   participants,
   match,
@@ -30,7 +31,7 @@ function TeamContainer({
 
   return (
     <Team
-      name={name}
+      displayName={displayName}
       profilePic="https://dummyimage.com/600x600/000/fff"
       participants={participants}
       threads={threads}
@@ -40,11 +41,12 @@ function TeamContainer({
 
 const mapStateToProps = (state) => ({
   userId: state.user.id,
+  displayName: state.team.displayName,
   threads: state.team.allThreadId.map((id) => state.team.threadById[id]),
   participants: state.team.allpartsId.map((id) => state.team.partById[id]),
-  //allThreadId threadById
 });
 const mapDispatchToProps = (dispatch) => ({
   initializeTeam: (team) => dispatch(initializeTeam(team)),
 });
+
 export default connect(mapStateToProps, mapDispatchToProps)(TeamContainer);

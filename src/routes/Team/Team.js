@@ -4,15 +4,20 @@ import TeamAside from "../../components/TeamAside";
 import TeamHeader from "../../components/TeamHeader";
 import { Switch, Route } from "react-router-dom";
 
-export default function Team({ name, profilePic, participants, threads }) {
+export default function Team({
+  displayName,
+  profilePic,
+  participants,
+  threads,
+}) {
   return (
     <Wrapper>
       <TeamAside
         teamPic={profilePic}
-        teamName={name}
+        teamName={displayName}
         participants={participants}
       />
-      <TeamHeader teamName={name} />
+      <TeamHeader teamName={displayName} />
       <Main>
         <Switch>
           <Route exact path="/team/:name">
