@@ -1,4 +1,5 @@
 import { INITIALIZE_TEAM } from "../constants";
+import moment from "moment";
 
 const initialState = {
   displayName: "",
@@ -6,6 +7,8 @@ const initialState = {
   allpartIds: [],
   threadById: {},
   allThreadIds: [],
+  allThreadDate: [],
+  threadsByDate: {},
 };
 
 export default function (state = initialState, action) {
@@ -20,6 +23,22 @@ export default function (state = initialState, action) {
       const partById = participants.reduce((acc, part) => {
         const { _id: id, username, email } = part;
         acc[id] = { id, username, email };
+        return acc;
+      }, {});
+      const allThreadDate = threads.reduce((acc, thread) => {
+        const date = moment(thread.created_at).format("YYYY-MM-DD");
+        if (acc.indexOf(date) === -1) {
+          acc.push(date);
+        }
+        return acc;
+      }, []);
+      const threadsByDate = threads.reduce((acc, thread) => {
+        const date = moment(thread.created_at).format("YYYY-MM-DD");
+        if (acc[date]) {
+          acc[date].push(thread);
+        } else {
+          acc[date] = [thread];
+        }
         return acc;
       }, {});
       const allThreadIds = threads.map((thread) => thread._id);
@@ -42,7 +61,9 @@ export default function (state = initialState, action) {
         allpartIds,
         partById,
         allThreadIds,
+        allThreadDate,
         threadById,
+        threadsByDate,
       };
     default:
       return {

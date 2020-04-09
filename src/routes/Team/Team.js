@@ -11,23 +11,8 @@ export default function Team({
   displayName,
   profilePic,
   participants,
-  //threads,
+  threads,
 }) {
-  const threads = [
-    {
-      date: "2020-04-09",
-      items: [
-        {
-          id: "asdf",
-          text: "Jeong 출근 완료",
-          likes: [],
-          comments: [],
-          createdBy: "Jeong",
-          createdAt: "2020-04-09T05:14:31.826Z",
-        },
-      ],
-    },
-  ];
   return (
     <Wrapper>
       <TeamAside
