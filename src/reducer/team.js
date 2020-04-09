@@ -2,10 +2,10 @@ import { INITIALIZE_TEAM } from "../constants";
 
 const initialState = {
   displayName: "",
-  allpartsId: [],
   partById: {},
-  allThreadId: [],
+  allpartIds: [],
   threadById: {},
+  allThreadIds: [],
 };
 
 export default function (state = initialState, action) {
@@ -16,17 +16,32 @@ export default function (state = initialState, action) {
         participants,
         display_name: displayName,
       } = action.payload;
-      const allpartsId = participants.map((part) => part._id);
-      const partById = allByCreator(participants);
-      const allThreadId = threads.map((thread) => thread._id);
-      const threadById = allByCreator(threads);
+      const allpartIds = participants.map((part) => part._id);
+      const partById = participants.reduce((acc, part) => {
+        const { _id: id, username, email } = part;
+        acc[id] = { id, username, email };
+        return acc;
+      }, {});
+      const allThreadIds = threads.map((thread) => thread._id);
+      const threadById = threads.reduce((acc, thread) => {
+        const {
+          _id: id,
+          text,
+          comments,
+          likes,
+          created_by: { username },
+          created_at: createdAt,
+        } = thread;
+        acc[id] = { id, text, comments, likes, createdBy: username, createdAt };
+        return acc;
+      }, {});
 
       return {
         ...state,
         displayName,
-        allpartsId,
+        allpartIds,
         partById,
-        allThreadId,
+        allThreadIds,
         threadById,
       };
     default:
@@ -34,11 +49,4 @@ export default function (state = initialState, action) {
         ...state,
       };
   }
-}
-function allByCreator(arr) {
-  return arr.reduce((acc, ele) => {
-    const { _id: id } = ele;
-    acc[ele._id] = { ...ele, id };
-    return acc;
-  }, {});
 }
