@@ -31,6 +31,7 @@ function TeamContainer({
 
   return (
     <Team
+      name={name}
       displayName={displayName}
       profilePic="https://dummyimage.com/600x600/000/fff"
       participants={participants}

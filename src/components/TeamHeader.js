@@ -60,6 +60,7 @@ const NavController = styled.input`
     right: 0;
   }
   & + label {
+    z-index: 10;
     display: none;
     position: fixed;
     top: 0;
@@ -69,6 +70,7 @@ const NavController = styled.input`
     background-color: rgba(0, 0, 0, 0.2);
   }
   & + label + nav {
+    z-index: 10;
     transition: all 0.3s;
     position: fixed;
     top: 0;

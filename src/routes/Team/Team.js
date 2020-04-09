@@ -7,6 +7,7 @@ import Threads from "../Threads";
 import ThreadList from "../../components/ThreadList/ThreadList";
 
 export default function Team({
+  name,
   displayName,
   profilePic,
   participants,
@@ -34,7 +35,7 @@ export default function Team({
         teamName={displayName}
         participants={participants}
       />
-      <TeamHeader teamName={displayName} />
+      <TeamHeader teamName={name} />
       <Main>
         <Switch>
           <Route exact path="/team/:name">
