@@ -5,10 +5,16 @@ import { workOnAPI, workOffAPI } from "../../api";
 
 const kakao = window.kakao;
 
-export default function Record({ teamName, teamLocation, userId, teamId }) {
+export default function Record({
+  userId,
+  teamId,
+  teamName,
+  teamLocation,
+  isWorking,
+  isWorkDone,
+}) {
   const { latitude, longitude } = teamLocation;
   let map;
-  console.log(teamName);
 
   function checkUserLocation() {
     navigator.geolocation.getCurrentPosition((position) => {
@@ -30,6 +36,7 @@ export default function Record({ teamName, teamLocation, userId, teamId }) {
     const response = await workOffAPI(teamId, userId);
     const result = await response.json();
   }
+
   useEffect(() => {
     const container = document.getElementById("map");
     const options = {
@@ -51,8 +58,13 @@ export default function Record({ teamName, teamLocation, userId, teamId }) {
       <Map id="map" />
       <RecordButtonWrap>
         <button onClick={checkUserLocation}>내 위치 확인하기</button>
-        <button onClick={workOn}>출근 기록 요청하기</button>
-        <button onClick={workOff}>퇴근 기록 요청하기</button>
+        {isWorkDone ? (
+          <button disabled={true}>근무 완료</button>
+        ) : isWorking ? (
+          <button onClick={workOff}>퇴근 기록 요청하기</button>
+        ) : (
+          <button onClick={workOn}>출근 기록 요청하기</button>
+        )}
       </RecordButtonWrap>
     </Wrapper>
   );
