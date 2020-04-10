@@ -2,6 +2,7 @@ import { INITIALIZE_TEAM } from "../constants";
 import moment from "moment";
 
 const initialState = {
+  id: "",
   displayName: "",
   location: {},
   partById: {},
@@ -16,6 +17,7 @@ export default function (state = initialState, action) {
   switch (action.type) {
     case INITIALIZE_TEAM:
       const {
+        _id: id,
         threads,
         location,
         participants,
@@ -59,6 +61,7 @@ export default function (state = initialState, action) {
 
       return {
         ...state,
+        id,
         displayName,
         location,
         allpartIds,
