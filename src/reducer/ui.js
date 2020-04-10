@@ -2,6 +2,9 @@ import {
   WORK_ON_PENDING,
   WORK_ON_SUCCESS,
   WORK_ON_FAILURE,
+  WORK_OFF_PENDING,
+  WORK_OFF_SUCCESS,
+  WORK_OFF_FAILURE,
   INITIALIZE_TEAM,
 } from "../constants";
 
@@ -14,13 +17,18 @@ const initialState = {
 export default function (state = initialState, action) {
   switch (action.type) {
     case WORK_ON_PENDING:
+    case WORK_OFF_PENDING:
       return {
         ...state,
         record: {
           isLoading: true,
         },
       };
-    case WORK_ON_SUCCESS || WORK_ON_FAILURE:
+
+    case WORK_ON_SUCCESS:
+    case WORK_ON_FAILURE:
+    case WORK_OFF_SUCCESS:
+    case WORK_OFF_FAILURE:
       return {
         ...state,
         record: {

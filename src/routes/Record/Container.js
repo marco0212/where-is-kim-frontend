@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 import Record from "./Record";
-import { workOn } from "../../thunks";
+import { workOn, workOff } from "../../thunks";
 
 const mapStateToProps = (state) => ({
   userId: state.user.id,
@@ -17,5 +17,6 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   workOn: (teamId, userId) => dispatch(workOn(teamId, userId)),
+  workOff: (teamId, userId) => dispatch(workOff(teamId, userId)),
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Record);

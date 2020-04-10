@@ -10,6 +10,9 @@ import {
   WORK_ON_PENDING,
   WORK_ON_SUCCESS,
   WORK_ON_FAILURE,
+  WORK_OFF_PENDING,
+  WORK_OFF_SUCCESS,
+  WORK_OFF_FAILURE,
 } from "../constants";
 
 export const getTokenPending = () => ({ type: GET_TOKEN_PENDING });
@@ -39,3 +42,10 @@ export const workOnSuccess = (userId) => ({
   payload: userId,
 });
 export const workOnFailure = () => ({ type: WORK_ON_FAILURE });
+
+export const workOffPending = () => ({ type: WORK_OFF_PENDING });
+export const workOffSuccess = (userId) => ({
+  type: WORK_OFF_SUCCESS,
+  payload: userId,
+});
+export const workOffFailure = () => ({ type: WORK_OFF_FAILURE });

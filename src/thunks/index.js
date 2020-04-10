@@ -6,8 +6,11 @@ import {
   workOnPending,
   workOnSuccess,
   workOnFailure,
+  workOffPending,
+  workOffSuccess,
+  workOffFailure,
 } from "../actions";
-import { getTokenAPI, workOnAPI } from "../api";
+import { getTokenAPI, workOnAPI, workOffAPI } from "../api";
 
 export const getToken = (email, password) => async (dispatch) => {
   try {
@@ -40,5 +43,18 @@ export const workOn = (teamId, userId) => async (dispatch) => {
     dispatch(workOnSuccess(userId));
   } catch (err) {
     dispatch(workOnFailure());
+  }
+};
+
+export const workOff = (teamId, userId) => async (dispatch) => {
+  try {
+    dispatch(workOffPending());
+
+    const response = await workOffAPI(teamId, userId);
+    await response.json();
+
+    dispatch(workOffSuccess(userId));
+  } catch (err) {
+    dispatch(workOffFailure());
   }
 };

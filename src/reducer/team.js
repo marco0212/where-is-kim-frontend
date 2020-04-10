@@ -1,4 +1,8 @@
-import { INITIALIZE_TEAM, WORK_ON_SUCCESS } from "../constants";
+import {
+  INITIALIZE_TEAM,
+  WORK_ON_SUCCESS,
+  WORK_OFF_SUCCESS,
+} from "../constants";
 import moment from "moment";
 
 const initialState = {
@@ -78,6 +82,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         onWorkingUser: [...state.onWorkingUser, action.payload],
+      };
+    }
+    case WORK_OFF_SUCCESS: {
+      const userId = action.payload;
+      const onWorkingUser = state.onWorkingUser.slice();
+      const userIdIndex = onWorkingUser.indexOf(userId);
+
+      onWorkingUser.splice(userIdIndex, 1);
+      return {
+        ...state,
+        onWorkingUser,
+        offWorkingUser: [...state.offWorkingUser, userId],
       };
     }
     default:
