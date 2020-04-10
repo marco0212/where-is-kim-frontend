@@ -7,10 +7,10 @@ const initialState = {
   location: {},
   partById: {},
   allpartIds: [],
-  threadById: {},
-  allThreadIds: [],
   allThreadDate: [],
   threadsByDate: {},
+  onWorkingUser: [],
+  offWorkingUser: [],
 };
 
 export default function (state = initialState, action) {
@@ -21,6 +21,7 @@ export default function (state = initialState, action) {
         threads,
         location,
         participants,
+        records,
         display_name: displayName,
       } = action.payload;
       const allpartIds = participants.map((part) => part._id);
@@ -45,19 +46,21 @@ export default function (state = initialState, action) {
         }
         return acc;
       }, {});
-      const allThreadIds = threads.map((thread) => thread._id);
-      const threadById = threads.reduce((acc, thread) => {
-        const {
-          _id: id,
-          text,
-          comments,
-          likes,
-          created_by: { username },
-          created_at: createdAt,
-        } = thread;
-        acc[id] = { id, text, comments, likes, createdBy: username, createdAt };
-        return acc;
-      }, {});
+      const onWorkingUser = [];
+      const offWorkingUser = [];
+
+      records
+        .filter((record) => {
+          const today = moment().format("YYYY-MM-DD");
+          return moment(record.work_on).isAfter(today);
+        })
+        .forEach((record) => {
+          if (record.work_off) {
+            offWorkingUser.push(record.recorded_by);
+          } else {
+            onWorkingUser.push(record.recorded_by);
+          }
+        });
 
       return {
         ...state,
@@ -66,10 +69,10 @@ export default function (state = initialState, action) {
         location,
         allpartIds,
         partById,
-        allThreadIds,
         allThreadDate,
-        threadById,
         threadsByDate,
+        onWorkingUser,
+        offWorkingUser,
       };
     default:
       return {
