@@ -1,4 +1,4 @@
-import { INITIALIZE_TEAM } from "../constants";
+import { INITIALIZE_TEAM, WORK_ON_SUCCESS } from "../constants";
 import moment from "moment";
 
 const initialState = {
@@ -74,6 +74,12 @@ export default function (state = initialState, action) {
         onWorkingUser,
         offWorkingUser,
       };
+    case WORK_ON_SUCCESS: {
+      return {
+        ...state,
+        onWorkingUser: [...state.onWorkingUser, action.payload],
+      };
+    }
     default:
       return {
         ...state,

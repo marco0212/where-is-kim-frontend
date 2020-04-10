@@ -1,5 +1,6 @@
 import { connect } from "react-redux";
 import Record from "./Record";
+import { workOn } from "../../thunks";
 
 const mapStateToProps = (state) => ({
   userId: state.user.id,
@@ -12,5 +13,9 @@ const mapStateToProps = (state) => ({
   isWorkDone: state.team.offWorkingUser.filter((id) => {
     return id === state.user.id;
   }).length,
+  isLoading: state.ui.record.isLoading,
 });
-export default connect(mapStateToProps)(Record);
+const mapDispatchToProps = (dispatch) => ({
+  workOn: (teamId, userId) => dispatch(workOn(teamId, userId)),
+});
+export default connect(mapStateToProps, mapDispatchToProps)(Record);

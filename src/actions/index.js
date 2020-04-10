@@ -7,6 +7,9 @@ import {
   UPDATE_USER_TEAM,
   REGISTER_TEAM_FAILURE,
   INITIALIZE_TEAM,
+  WORK_ON_PENDING,
+  WORK_ON_SUCCESS,
+  WORK_ON_FAILURE,
 } from "../constants";
 
 export const getTokenPending = () => ({ type: GET_TOKEN_PENDING });
@@ -29,3 +32,10 @@ export const updateUserTeam = (team) => ({
   payload: team,
 });
 export const registerTeamFailure = () => ({ type: REGISTER_TEAM_FAILURE });
+
+export const workOnPending = () => ({ type: WORK_ON_PENDING });
+export const workOnSuccess = (userId) => ({
+  type: WORK_ON_SUCCESS,
+  payload: userId,
+});
+export const workOnFailure = () => ({ type: WORK_ON_FAILURE });

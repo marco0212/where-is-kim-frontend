@@ -12,6 +12,8 @@ export default function Record({
   teamLocation,
   isWorking,
   isWorkDone,
+  workOn,
+  isLoading,
 }) {
   const { latitude, longitude } = teamLocation;
   let map;
@@ -27,10 +29,10 @@ export default function Record({
     });
   }
 
-  async function workOn() {
-    const response = await workOnAPI(teamId, userId);
-    const result = await response.json();
-  }
+  // async function workOn() {
+  //   const response = await workOnAPI(teamId, userId);
+  //   const result = await response.json();
+  // }
 
   async function workOff() {
     const response = await workOffAPI(teamId, userId);
@@ -59,11 +61,15 @@ export default function Record({
       <RecordButtonWrap>
         <button onClick={checkUserLocation}>내 위치 확인하기</button>
         {isWorkDone ? (
-          <button disabled={true}>근무 완료</button>
+          <button disabled={true}>{isLoading ? "Loading" : "근무 완료"}</button>
         ) : isWorking ? (
-          <button onClick={workOff}>퇴근 기록 요청하기</button>
+          <button onClick={workOff}>
+            {isLoading ? "Loading" : "퇴근 기록 요청하기"}
+          </button>
         ) : (
-          <button onClick={workOn}>출근 기록 요청하기</button>
+          <button onClick={workOn.bind(null, teamId, userId)}>
+            {isLoading ? "Loading" : "출근 기록 요청하기"}
+          </button>
         )}
       </RecordButtonWrap>
     </Wrapper>
