@@ -5,6 +5,7 @@ import TeamHeader from "../../components/TeamHeader";
 import { Switch, Route } from "react-router-dom";
 import Threads from "../Threads";
 import Record from "../Record/Container";
+import Admin from "../Admin/Admin";
 
 export default function Team({
   name,
@@ -29,7 +30,9 @@ export default function Team({
           <Route path="/team/:name/record">
             <Record />
           </Route>
-          <Route path="/team/:name/admin">Admin route</Route>
+          <Route path="/team/:name/admin">
+            <Admin />
+          </Route>
         </Switch>
       </Main>
     </Wrapper>
