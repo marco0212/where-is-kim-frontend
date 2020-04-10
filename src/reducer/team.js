@@ -3,6 +3,7 @@ import moment from "moment";
 
 const initialState = {
   displayName: "",
+  location: {},
   partById: {},
   allpartIds: [],
   threadById: {},
@@ -16,6 +17,7 @@ export default function (state = initialState, action) {
     case INITIALIZE_TEAM:
       const {
         threads,
+        location,
         participants,
         display_name: displayName,
       } = action.payload;
@@ -58,6 +60,7 @@ export default function (state = initialState, action) {
       return {
         ...state,
         displayName,
+        location,
         allpartIds,
         partById,
         allThreadIds,

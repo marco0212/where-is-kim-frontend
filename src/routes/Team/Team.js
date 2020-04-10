@@ -4,7 +4,7 @@ import TeamAside from "../../components/TeamAside";
 import TeamHeader from "../../components/TeamHeader";
 import { Switch, Route } from "react-router-dom";
 import Threads from "../Threads";
-import ThreadList from "../../components/ThreadList/ThreadList";
+import Record from "../Record/Container";
 
 export default function Team({
   name,
@@ -26,7 +26,9 @@ export default function Team({
           <Route exact path="/team/:name">
             <Threads threads={threads} />
           </Route>
-          <Route path="/team/:name/record">Record</Route>
+          <Route path="/team/:name/record">
+            <Record />
+          </Route>
           <Route path="/team/:name/admin">Admin route</Route>
         </Switch>
       </Main>
