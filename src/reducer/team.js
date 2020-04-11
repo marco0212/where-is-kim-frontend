@@ -3,6 +3,7 @@ import {
   WORK_ON_SUCCESS,
   WORK_OFF_SUCCESS,
   UPDATE_ACTIVE_USERS,
+  UPDATE_THREADS,
 } from "../constants";
 import moment from "moment";
 
@@ -107,5 +108,30 @@ export default function (state = initialState, action) {
       return {
         ...state,
       };
+
+    case UPDATE_THREADS: {
+      const threads = action.payload;
+      const allThreadDate = threads.reduce((acc, thread) => {
+        const date = moment(thread.created_at).format("YYYY-MM-DD");
+        if (acc.indexOf(date) === -1) {
+          acc.push(date);
+        }
+        return acc;
+      }, []);
+      const threadsByDate = threads.reduce((acc, thread) => {
+        const date = moment(thread.created_at).format("YYYY-MM-DD");
+        if (acc[date]) {
+          acc[date].push(thread);
+        } else {
+          acc[date] = [thread];
+        }
+        return acc;
+      }, {});
+      return {
+        ...state,
+        allThreadDate,
+        threadsByDate,
+      };
+    }
   }
 }

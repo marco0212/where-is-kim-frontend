@@ -11,6 +11,7 @@ import {
   workOffFailure,
 } from "../actions";
 import { getTokenAPI, workOnAPI, workOffAPI } from "../api";
+import { emitAddThread } from "../socket";
 
 export const getToken = (email, password) => async (dispatch) => {
   try {
@@ -41,6 +42,7 @@ export const workOn = (teamId, userId) => async (dispatch) => {
     await response.json();
 
     dispatch(workOnSuccess(userId));
+    emitAddThread();
   } catch (err) {
     dispatch(workOnFailure());
   }
@@ -54,6 +56,7 @@ export const workOff = (teamId, userId) => async (dispatch) => {
     await response.json();
 
     dispatch(workOffSuccess(userId));
+    emitAddThread();
   } catch (err) {
     dispatch(workOffFailure());
   }

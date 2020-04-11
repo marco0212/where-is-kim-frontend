@@ -3,7 +3,7 @@ import styled from "styled-components";
 import TeamAside from "../../components/TeamAside/Container";
 import TeamHeader from "../../components/TeamHeader";
 import { Switch, Route } from "react-router-dom";
-import Threads from "../Threads";
+import Threads from "../Threads/Container";
 import Record from "../Record/Container";
 import Admin from "../Admin/Admin";
 
@@ -14,15 +14,9 @@ export default function Team({ name, displayName, profilePic, threads }) {
       <TeamHeader teamName={name} />
       <Main>
         <Switch>
-          <Route exact path="/team/:name">
-            <Threads threads={threads} />
-          </Route>
-          <Route path="/team/:name/record">
-            <Record />
-          </Route>
-          <Route path="/team/:name/admin">
-            <Admin />
-          </Route>
+          <Route exact path="/team/:name" component={Threads} />
+          <Route path="/team/:name/record" component={Record} />
+          <Route path="/team/:name/admin" component={Admin} />
         </Switch>
       </Main>
     </Wrapper>

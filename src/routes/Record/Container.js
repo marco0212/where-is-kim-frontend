@@ -16,7 +16,11 @@ const mapStateToProps = (state) => ({
   isLoading: state.ui.record.isLoading,
 });
 const mapDispatchToProps = (dispatch) => ({
-  workOn: (teamId, userId) => dispatch(workOn(teamId, userId)),
-  workOff: (teamId, userId) => dispatch(workOff(teamId, userId)),
+  workOn: (teamId, userId) => {
+    dispatch(workOn(teamId, userId));
+  },
+  workOff: (teamId, userId) => {
+    dispatch(workOff(teamId, userId));
+  },
 });
 export default connect(mapStateToProps, mapDispatchToProps)(Record);

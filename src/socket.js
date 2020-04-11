@@ -9,3 +9,7 @@ export function emitJoinTeam(username, teamName) {
 export function emitLeaveTeam() {
   socket.emit("leave team");
 }
+
+export function emitAddThread() {
+  socket.emit("add thread");
+}

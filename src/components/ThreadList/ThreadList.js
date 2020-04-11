@@ -5,10 +5,14 @@ import ThreadItem from "../ThreadItem/ThreadItem";
 
 export default function ThreadList({ thread, userId }) {
   const { date, items } = thread;
+  const displyaDate =
+    moment().format("YYYY-MM-DD") === moment(date).format("YYYY-MM-DD")
+      ? "Today"
+      : moment(date).format("dddd, MMMM Do YYYY");
   return (
     <>
       <ThreadDivider>
-        <span>{moment(date).format("dddd, MMMM Do YYYY")}</span>
+        <span>{displyaDate}</span>
       </ThreadDivider>
       {items.map((thread) => {
         const {

@@ -14,6 +14,7 @@ import {
   WORK_OFF_SUCCESS,
   WORK_OFF_FAILURE,
   UPDATE_ACTIVE_USERS,
+  UPDATE_THREADS,
 } from "../constants";
 
 export const getTokenPending = () => ({ type: GET_TOKEN_PENDING });
@@ -54,4 +55,9 @@ export const workOffFailure = () => ({ type: WORK_OFF_FAILURE });
 export const updateActiveUsers = (ids) => ({
   type: UPDATE_ACTIVE_USERS,
   payload: ids,
+});
+
+export const updateThreads = (threads) => ({
+  type: UPDATE_THREADS,
+  payload: threads,
 });
