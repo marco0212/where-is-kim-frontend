@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import TeamAside from "../../components/TeamAside";
+import TeamAside from "../../components/TeamAside/Container";
 import TeamHeader from "../../components/TeamHeader";
 import { Switch, Route } from "react-router-dom";
 import Threads from "../Threads";
