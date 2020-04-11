@@ -102,7 +102,7 @@ export default function (state = initialState, action) {
     case UPDATE_ACTIVE_USERS:
       return {
         ...state,
-        connectedUser: action.payload,
+        connectedUser: [...new Set(action.payload)],
       };
     default:
       return {
