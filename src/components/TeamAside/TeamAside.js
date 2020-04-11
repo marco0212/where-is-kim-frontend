@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import UserList from "../UserList/UserList";
 
 export default function TeamAside({ teamPic, teamName, participants }) {
   return (
@@ -10,13 +11,7 @@ export default function TeamAside({ teamPic, teamName, participants }) {
         </ImageWrap>
         <h3>{teamName}</h3>
       </LogoWrap>
-      <UserList>
-        {participants.map((part) => (
-          <li key={part.id}>
-            <strong>{part.username}</strong>
-          </li>
-        ))}
-      </UserList>
+      <UserList users={participants} />
     </Aside>
   );
 }
@@ -44,23 +39,5 @@ const ImageWrap = styled.div`
   margin-right: 15px;
   & img {
     width: 100%;
-  }
-`;
-const UserList = styled.ul`
-  & li {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    margin-bottom: 10px;
-    opacity: 0.6;
-    &:before {
-      content: "";
-      display: inline-block;
-      margin-right: 10px;
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      border: 2px solid #eee;
-    }
   }
 `;

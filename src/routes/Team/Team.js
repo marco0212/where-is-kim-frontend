@@ -7,20 +7,10 @@ import Threads from "../Threads";
 import Record from "../Record/Container";
 import Admin from "../Admin/Admin";
 
-export default function Team({
-  name,
-  displayName,
-  profilePic,
-  participants,
-  threads,
-}) {
+export default function Team({ name, displayName, profilePic, threads }) {
   return (
     <Wrapper>
-      <TeamAside
-        teamPic={profilePic}
-        teamName={displayName}
-        participants={participants}
-      />
+      <TeamAside teamPic={profilePic} teamName={displayName} />
       <TeamHeader teamName={name} />
       <Main>
         <Switch>

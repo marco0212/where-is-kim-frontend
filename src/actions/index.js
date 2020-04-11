@@ -13,6 +13,7 @@ import {
   WORK_OFF_PENDING,
   WORK_OFF_SUCCESS,
   WORK_OFF_FAILURE,
+  UPDATE_ACTIVE_USERS,
 } from "../constants";
 
 export const getTokenPending = () => ({ type: GET_TOKEN_PENDING });
@@ -49,3 +50,8 @@ export const workOffSuccess = (userId) => ({
   payload: userId,
 });
 export const workOffFailure = () => ({ type: WORK_OFF_FAILURE });
+
+export const updateActiveUsers = (ids) => ({
+  type: UPDATE_ACTIVE_USERS,
+  payload: ids,
+});

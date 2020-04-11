@@ -2,6 +2,7 @@ import {
   INITIALIZE_TEAM,
   WORK_ON_SUCCESS,
   WORK_OFF_SUCCESS,
+  UPDATE_ACTIVE_USERS,
 } from "../constants";
 import moment from "moment";
 
@@ -15,6 +16,7 @@ const initialState = {
   threadsByDate: {},
   onWorkingUser: [],
   offWorkingUser: [],
+  connectedUser: [],
 };
 
 export default function (state = initialState, action) {
@@ -31,7 +33,7 @@ export default function (state = initialState, action) {
       const allpartIds = participants.map((part) => part._id);
       const partById = participants.reduce((acc, part) => {
         const { _id: id, username, email } = part;
-        acc[id] = { id, username, email, isActive: false };
+        acc[id] = { id, username, email };
         return acc;
       }, {});
       const allThreadDate = threads.reduce((acc, thread) => {
@@ -96,6 +98,11 @@ export default function (state = initialState, action) {
         offWorkingUser: [...state.offWorkingUser, userId],
       };
     }
+    case UPDATE_ACTIVE_USERS:
+      return {
+        ...state,
+        connectedUser: action.payload,
+      };
     default:
       return {
         ...state,
