@@ -3,7 +3,7 @@ import Team from "./Team";
 import { connect } from "react-redux";
 import { joinTeamAPI } from "../../api";
 import { initializeTeam } from "../../actions";
-import { emitJoinTeam } from "../../socket";
+import { emitJoinTeam, emitLeaveTeam } from "../../socket";
 
 function TeamContainer({
   userId,
@@ -29,6 +29,7 @@ function TeamContainer({
     }
 
     joinTeam();
+    return emitLeaveTeam;
   }, [name, userId, history, initializeTeam]);
 
   return (

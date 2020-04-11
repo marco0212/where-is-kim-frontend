@@ -14,6 +14,10 @@ function TeamAsideContainer({
     socket.on("join team", (activeUserIds) => {
       updateActiveUsers(activeUserIds);
     });
+
+    socket.on("leave team", (activeUserIds) => {
+      updateActiveUsers(activeUserIds);
+    });
   }, [updateActiveUsers]);
 
   return (
