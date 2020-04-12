@@ -5,7 +5,7 @@ import TeamHeader from "../../components/TeamHeader";
 import { Switch, Route } from "react-router-dom";
 import Threads from "../Threads/Container";
 import Record from "../Record/Container";
-import Admin from "../Admin/Admin";
+import Admin from "../Admin/Container";
 
 export default function Team({ name, currentPage, displayName, profilePic }) {
   return (
