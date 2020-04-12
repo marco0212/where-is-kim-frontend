@@ -14,4 +14,5 @@ function AnaliticsContainer({ updateCurrentPage }) {
 const mapDispatchToProps = (dispatch) => ({
   updateCurrentPage: (page) => dispatch(updateCurrentPage(page)),
 });
+
 export default connect(null, mapDispatchToProps)(AnaliticsContainer);

@@ -20,5 +20,6 @@ export default function Admin() {
 }
 
 const Wrapper = styled.div`
+  min-height: 100%;
   padding: 30px 30px 0;
 `;

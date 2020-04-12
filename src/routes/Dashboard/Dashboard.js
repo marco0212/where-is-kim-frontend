@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ThreadList from "../../components/ThreadList/ThreadList";
-import PieChart from "../PieChart/PieChart";
+import PieChart from "../../components/PieChart/PieChart";
 
 export default function Dashboard({
   threads,
@@ -60,7 +60,7 @@ const Wrapper = styled.div`
   grid-template-columns: 1fr 1fr 1fr 2fr;
   grid-template-rows: auto 1fr 1fr;
 `;
-const Box = styled.div`
+export const Box = styled.div`
   border: 1px solid #ebebeb;
   padding: 15px;
 `;
