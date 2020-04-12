@@ -10,7 +10,7 @@ export default function Admin() {
     <Switch>
       <Route exact path="/team/:name/admin/" component={Dashboard} />
       <Route path="/team/:name/admin/analitics" component={Analitics} />
-      <Route path="/team/:name/admin/members" component={Participants} />
+      <Route path="/team/:name/admin/participants" component={Participants} />
       <Route path="/team/:name/admin/settings" component={Settings} />
     </Switch>
   );

@@ -1,8 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Analitics from "./Analitics";
+import { updateCurrentPage } from "../../actions";
 
-function AnaliticsContainer() {
+function AnaliticsContainer({ updateCurrentPage }) {
+  useEffect(() => {
+    updateCurrentPage("Analitics");
+  }, [updateCurrentPage]);
+
   return <Analitics />;
 }
-export default connect()(AnaliticsContainer);
+
+const mapDispatchToProps = (dispatch) => ({
+  updateCurrentPage: (page) => dispatch(updateCurrentPage(page)),
+});
+export default connect(null, mapDispatchToProps)(AnaliticsContainer);
