@@ -6,6 +6,7 @@ export default createGlobalStyle`
   body {
     font-size: 14px;
     line-height: 1.6;
+    min-width: 1280px;
   }
   * {
     font-size: inherit;

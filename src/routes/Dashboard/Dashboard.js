@@ -1,31 +1,54 @@
 import React from "react";
 import styled from "styled-components";
 import ThreadList from "../../components/ThreadList/ThreadList";
+import PieChart from "../PieChart/PieChart";
 
-export default function Dashboard({ threads }) {
+export default function Dashboard({
+  threads,
+  onWorkingUserCount,
+  offWorkingUserCount,
+}) {
   return (
     <Wrapper>
       <StatusBox>
         <h3>총 인원</h3>
-        <span>10</span>
+        <span>{onWorkingUserCount + offWorkingUserCount}</span>
       </StatusBox>
       <StatusBox>
         <h3>출근 완료</h3>
-        <span>10</span>
+        <span>{onWorkingUserCount}</span>
       </StatusBox>
       <StatusBox>
         <h3>퇴근 완료</h3>
-        <span>10</span>
+        <span>{offWorkingUserCount}</span>
       </StatusBox>
       <ThreadBox>
         <h3>Today status</h3>
         <ThreadList threads={threads} />
       </ThreadBox>
       <ElseBox>
-        <h3>총 지각 비율</h3>
+        <h3>총 지각 횟수</h3>
+        <div>
+          <PieChart />
+          <ChartLegend>
+            <li>정인엽</li>
+            <li>정인엽</li>
+            <li>정인엽</li>
+          </ChartLegend>
+        </div>
       </ElseBox>
       <ElseBox>
-        <h3>지각 왕</h3>
+        <h3>이번 달 지각 왕</h3>
+        <div>
+          <ImageWrap>
+            <img src="https://dummyimage.com/600x600/000/fff" alt="User" />
+          </ImageWrap>
+          <p>
+            성실함은 하늘의 도(道)요.
+            <br />
+            성실해지려고 노력함은 사람의 도이니라.
+          </p>
+        </div>
       </ElseBox>
     </Wrapper>
   );
@@ -71,4 +94,31 @@ const ThreadBox = styled(Box)`
 `;
 const ElseBox = styled(Box)`
   grid-column: 1/4;
+  & > div {
+    display: flex;
+    align-items: center;
+  }
+`;
+const ChartLegend = styled.ol`
+  padding-left: 20px;
+  list-style: decimal;
+
+  & li {
+    font-size: 16px;
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 0;
+    }
+  }
+`;
+const ImageWrap = styled.div`
+  width: 100px;
+  height: 100px;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-right: 15px;
+  & + p {
+    margin-left: 30px;
+    font-size: 16px;
+  }
 `;
