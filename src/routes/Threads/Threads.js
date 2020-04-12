@@ -1,5 +1,5 @@
 import React from "react";
-import ThreadList from "../../components/ThreadList/ThreadList";
+import ThreadListWithDivider from "../../components/ThreadListWithDivider/ThreadListWithDivider";
 import styled from "styled-components";
 import { FaSync } from "react-icons/fa";
 
@@ -7,7 +7,7 @@ export default function Threads({ threads, userId }) {
   return (
     <Wrapper>
       {threads.map((thread) => (
-        <ThreadList key={thread.date} thread={thread} userId={userId} />
+        <ThreadListWithDivider key={thread.date} thread={thread} />
       ))}
       <Button>
         <FaSync />
