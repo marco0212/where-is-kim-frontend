@@ -1,6 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import UserList from "../UserList/UserList";
+import { Link } from "react-router-dom";
+import { FaSignOutAlt } from "react-icons/fa";
 
 export default function TeamAside({ teamPic, teamName, participants }) {
   return (
@@ -12,6 +14,9 @@ export default function TeamAside({ teamPic, teamName, participants }) {
         <h3>{teamName}</h3>
       </LogoWrap>
       <UserList users={participants} />
+      <Button to="/">
+        <FaSignOutAlt /> Back to Lobby
+      </Button>
     </Aside>
   );
 }
@@ -20,7 +25,7 @@ const Aside = styled.aside`
   display: flex;
   flex-direction: column;
   color: #f1f1f1;
-  padding: 30px 0 30px 30px;
+  padding: 30px 25px;
   background-color: #3f0e40;
 `;
 const LogoWrap = styled.div`
@@ -39,5 +44,15 @@ const ImageWrap = styled.div`
   margin-right: 15px;
   & img {
     width: 100%;
+  }
+`;
+const Button = styled(Link)`
+  margin-top: auto;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+  color: #ebebeb;
+  & svg {
+    margin-right: 10px;
   }
 `;

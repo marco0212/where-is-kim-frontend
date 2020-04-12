@@ -2,8 +2,8 @@ import React, { useEffect } from "react";
 import Team from "./Team";
 import { connect } from "react-redux";
 import { joinTeamAPI } from "../../api";
-import { initializeTeam } from "../../actions";
-import { emitJoinTeam, emitLeaveTeam } from "../../socket";
+import { initializeTeam, updateThreads } from "../../actions";
+import { emitJoinTeam, emitLeaveTeam, socket } from "../../socket";
 
 function TeamContainer({
   userId,
@@ -13,8 +13,24 @@ function TeamContainer({
   match,
   history,
   initializeTeam,
+  updateThreads,
 }) {
   const { name } = match.params;
+
+  useEffect(() => {
+    socket.on("add thread", async () => {
+      const response = await joinTeamAPI(name, userId);
+      const {
+        team: { threads },
+      } = await response.json();
+
+      updateThreads(threads);
+    });
+
+    return () => {
+      socket.off("add thread");
+    };
+  }, [name, userId, updateThreads]);
 
   useEffect(() => {
     async function joinTeam() {
@@ -51,6 +67,7 @@ const mapStateToProps = (state) => ({
 });
 const mapDispatchToProps = (dispatch) => ({
   initializeTeam: (team) => dispatch(initializeTeam(team)),
+  updateThreads: (threads) => dispatch(updateThreads(threads)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamContainer);

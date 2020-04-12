@@ -21,7 +21,7 @@ export default function TeamHeader({ teamName }) {
         </ToggleButtonWrap>
         <ul>
           <li>
-            <Link to={`/team/${teamName}`}>Lobby</Link>
+            <Link to={`/team/${teamName}`}>Thread</Link>
           </li>
           <li>
             <Link to={`/team/${teamName}/record`}>Record</Link>

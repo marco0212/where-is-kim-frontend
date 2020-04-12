@@ -104,6 +104,9 @@ const ImageWrap = styled.div`
   & img {
     width: 100%;
   }
+  & + div {
+    flex: 1;
+  }
 `;
 const ThreadButtonWrap = styled.button`
   vertical-align: top;

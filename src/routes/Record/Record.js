@@ -1,6 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { ButtonWrap } from "../../components/LoginForm/LoginForm";
+import RecordButton from "../../components/RecordButton";
 
 const kakao = window.kakao;
 
@@ -52,20 +53,24 @@ export default function Record({
   return (
     <Wrapper>
       <Map id="map" />
-      <RecordButtonWrap>
+      <ButtonWrap>
         <button onClick={checkUserLocation}>내 위치 확인하기</button>
         {isWorkDone ? (
-          <button disabled={true}>{isLoading ? "Loading" : "근무 완료"}</button>
+          <RecordButton text="근무 완료" isDisabled={true} />
         ) : isWorking ? (
-          <button onClick={workOff.bind(null, teamId, userId)}>
-            {isLoading ? "Loading" : "퇴근 기록 요청하기"}
-          </button>
+          <RecordButton
+            text={isLoading ? "Loading" : "퇴근 기록하기"}
+            onClick={workOff.bind(null, teamId, userId)}
+            isDisabled={isLoading}
+          />
         ) : (
-          <button onClick={workOn.bind(null, teamId, userId)}>
-            {isLoading ? "Loading" : "출근 기록 요청하기"}
-          </button>
+          <RecordButton
+            text={isLoading ? "Loading" : "출근 기록하기"}
+            onClick={workOn.bind(null, teamId, userId)}
+            isDisabled={isLoading}
+          />
         )}
-      </RecordButtonWrap>
+      </ButtonWrap>
     </Wrapper>
   );
 }
@@ -80,4 +85,3 @@ const Wrapper = styled.div`
 const Map = styled.div`
   flex: 1;
 `;
-const RecordButtonWrap = styled(ButtonWrap)``;

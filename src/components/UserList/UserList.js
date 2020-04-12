@@ -16,7 +16,11 @@ export default function UserList({ users }) {
   );
 }
 
-const Wrapper = styled.ul``;
+const Wrapper = styled.ul`
+  flex: 1;
+  overflow-y: scroll;
+  margin-bottom: 30px;
+`;
 const ListItem = styled.li`
   display: flex;
   align-items: center;
