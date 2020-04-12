@@ -5,6 +5,7 @@ import PieChart from "../../components/PieChart/PieChart";
 
 export default function Dashboard({
   threads,
+  allpartsCount,
   onWorkingUserCount,
   offWorkingUserCount,
 }) {
@@ -12,7 +13,7 @@ export default function Dashboard({
     <Wrapper>
       <StatusBox>
         <h3>총 인원</h3>
-        <span>{onWorkingUserCount + offWorkingUserCount}</span>
+        <span>{allpartsCount}</span>
       </StatusBox>
       <StatusBox>
         <h3>출근 완료</h3>

@@ -6,8 +6,9 @@ import moment from "moment";
 
 function DashboardContainer({
   threads,
-  onWorkingUser,
-  offWorkingUser,
+  allpartsCount,
+  onWorkingUserCount,
+  offWorkingUserCount,
   updateCurrentPage,
 }) {
   useEffect(() => {
@@ -16,8 +17,9 @@ function DashboardContainer({
   return (
     <Dashboard
       threads={threads}
-      onWorkingUserCount={onWorkingUser.length}
-      offWorkingUserCount={offWorkingUser.length}
+      allpartsCount={allpartsCount}
+      onWorkingUserCount={onWorkingUserCount}
+      offWorkingUserCount={offWorkingUserCount}
     />
   );
 }
@@ -28,8 +30,9 @@ const mapStateToProps = (state) => {
 
   return {
     threads,
-    onWorkingUser: state.team.onWorkingUser,
-    offWorkingUser: state.team.offWorkingUser,
+    allpartsCount: state.team.allpartIds.length,
+    onWorkingUserCount: state.team.onWorkingUser.length,
+    offWorkingUserCount: state.team.offWorkingUser.length,
   };
 };
 const mapDispatchToProps = (dispatch) => ({
