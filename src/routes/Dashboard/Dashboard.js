@@ -58,7 +58,7 @@ const Wrapper = styled.div`
   display: grid;
   grid-gap: 15px;
   grid-template-columns: 1fr 1fr 1fr 2fr;
-  grid-template-rows: auto 1fr 1fr;
+  grid-template-rows: auto 1fr auto;
 `;
 export const Box = styled.div`
   border: 1px solid #ebebeb;
@@ -97,6 +97,9 @@ const ElseBox = styled(Box)`
   & > div {
     display: flex;
     align-items: center;
+  }
+  & canvas {
+    max-width: 60%;
   }
 `;
 const ChartLegend = styled.ol`
