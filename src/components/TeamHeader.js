@@ -3,10 +3,11 @@ import styled from "styled-components";
 import { FaTimes, FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default function TeamHeader({ teamName }) {
+export default function TeamHeader({ teamName, currentPage }) {
   return (
     <>
       <Wrapper>
+        <h3>{currentPage}</h3>
         <ToggleActiveButton htmlFor="side-nav">
           <FaBars />
         </ToggleActiveButton>
@@ -38,7 +39,12 @@ export default function TeamHeader({ teamName }) {
 const Wrapper = styled.div`
   padding: 15px 30px;
   border-bottom: 1px solid #ebebeb;
-  text-align: right;
+  display: flex;
+  justify-content: space-between;
+  & h3 {
+    margin-bottom: 0;
+    text-transform: uppercase;
+  }
 `;
 const ToggleActiveButton = styled.label`
   display: inline-block;

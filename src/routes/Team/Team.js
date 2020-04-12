@@ -7,11 +7,11 @@ import Threads from "../Threads/Container";
 import Record from "../Record/Container";
 import Admin from "../Admin/Admin";
 
-export default function Team({ name, displayName, profilePic, threads }) {
+export default function Team({ name, currentPage, displayName, profilePic }) {
   return (
     <Wrapper>
       <TeamAside teamPic={profilePic} teamName={displayName} />
-      <TeamHeader teamName={name} />
+      <TeamHeader teamName={name} currentPage={currentPage} />
       <Main>
         <Switch>
           <Route exact path="/team/:name" component={Threads} />

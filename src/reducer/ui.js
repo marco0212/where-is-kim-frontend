@@ -6,9 +6,11 @@ import {
   WORK_OFF_SUCCESS,
   WORK_OFF_FAILURE,
   INITIALIZE_TEAM,
+  UPDATE_CURRENT_PAGE,
 } from "../constants";
 
 const initialState = {
+  currentPage: "",
   record: {
     isLoading: false,
   },
@@ -36,6 +38,11 @@ export default function (state = initialState, action) {
         },
       };
 
+    case UPDATE_CURRENT_PAGE:
+      return {
+        ...state,
+        currentPage: action.payload,
+      };
     default:
       return {
         ...state,

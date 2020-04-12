@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { connect } from "react-redux";
 import Threads from "./Threads";
+import { updateCurrentPage } from "../../actions";
 
-function ThreadsContainer({ userId, threads }) {
+function ThreadsContainer({ userId, threads, updateCurrentPage }) {
+  useEffect(() => {
+    updateCurrentPage("threads");
+  }, [updateCurrentPage]);
+
   return <Threads userId={userId} threads={threads} />;
 }
 
@@ -13,5 +18,8 @@ const mapStateToProps = (state) => ({
     items: state.team.threadsByDate[date],
   })),
 });
+const mapDispatchToProps = (dispatch) => ({
+  updateCurrentPage: (page) => dispatch(updateCurrentPage(page)),
+});
 
-export default connect(mapStateToProps)(ThreadsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(ThreadsContainer);

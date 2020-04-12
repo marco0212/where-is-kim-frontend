@@ -48,7 +48,7 @@ export default function ThreadItem({
         </li>
       </ThreadItemBottom>
       {showComment ? (
-        <div style={{ marginTop: "15px" }}>
+        <div>
           <CommentInput
             type="text"
             controller={comment}
@@ -93,6 +93,9 @@ const ThreadItemBottom = styled.ul`
   display: flex;
   & li {
     margin-right: 15px;
+  }
+  & + div {
+    margin-top: 15px;
   }
 `;
 const ImageWrap = styled.div`
