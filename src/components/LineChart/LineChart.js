@@ -5,7 +5,11 @@ import styled from "styled-components";
 
 export default function LineChart() {
   const chart = useRef(null);
-  const records = [{ name: "Jeong", times: 6 }];
+  const records = [
+    { name: "Jeong", times: 6 },
+    { name: "Kim", times: 9 },
+    { name: "Park", times: 1 },
+  ];
 
   useEffect(() => {
     const ctx = chart.current.getContext("2d");
@@ -35,6 +39,7 @@ export default function LineChart() {
             {
               ticks: {
                 beginAtZero: true,
+                stepSize: 1,
               },
             },
           ],
@@ -46,14 +51,11 @@ export default function LineChart() {
 
   return (
     <Wrapper>
-      <Canvas id="line" ref={chart} />
+      <canvas id="line" ref={chart} />
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
   height: 200px;
-`;
-const Canvas = styled.canvas`
-  height: 300px;
 `;
