@@ -28,7 +28,18 @@ export default function TeamHeader({ teamName, currentPage }) {
             <Link to={`/team/${teamName}/record`}>Record</Link>
           </li>
           <li>
-            <Link to={`/team/${teamName}/admin`}>Admin</Link>
+            <Link to={`/team/${teamName}/admin`}>Dashboard</Link>
+          </li>
+          <li>
+            <Link to={`/team/${teamName}/admin/analitics`}>Analitics</Link>
+          </li>
+          <li>
+            <Link to={`/team/${teamName}/admin/participants`}>
+              participants
+            </Link>
+          </li>
+          <li>
+            <Link to={`/team/${teamName}/admin/settings`}>settings</Link>
           </li>
         </ul>
       </nav>
