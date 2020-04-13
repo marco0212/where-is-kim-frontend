@@ -1,11 +1,10 @@
 import React, { useEffect, useRef } from "react";
 import Chart from "chart.js";
 import randomColor from "randomcolor";
-import styled from "styled-components";
 
 export default function PieChart() {
   const chart = useRef(null);
-  const records = [{ name: "Jeong", times: 6 }];
+  const records = [{ name: "Jeong", times: 0 }];
 
   useEffect(() => {
     const ctx = chart.current.getContext("2d");

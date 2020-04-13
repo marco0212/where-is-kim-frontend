@@ -9,7 +9,7 @@ export default function BarChart() {
   useEffect(() => {
     const ctx = chart.current.getContext("2d");
     const labels = ["Mon", "Tue", "Wed", "Thu", "Fri"];
-    const data = [1, 6, 0, 6, 7];
+    const data = [0, 1, 0, 0, 0];
     const backgroundColor = data.map(() => randomColor());
 
     new Chart(ctx, {
@@ -31,6 +31,7 @@ export default function BarChart() {
             {
               ticks: {
                 beginAtZero: true,
+                stepSize: 1,
               },
             },
           ],

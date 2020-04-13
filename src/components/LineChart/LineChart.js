@@ -19,13 +19,13 @@ export default function LineChart() {
     new Chart(ctx, {
       type: "line",
       data: {
-        labels: ["Red", "Blue", "Yellow"],
+        labels: ["Red"],
         datasets: [
           {
             borderColor: randomColor(),
             fill: 0,
             lineTension: 0,
-            data: [1, 5, 2],
+            data: [1],
           },
         ],
       },
