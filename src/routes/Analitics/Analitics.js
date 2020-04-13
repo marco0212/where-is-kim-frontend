@@ -5,7 +5,7 @@ import PieChart from "../../components/PieChart/PieChart";
 import BarChart from "../../components/BarChart/BarChart";
 import LineChart from "../../components/LineChart/LineChart";
 
-export default function Analitics() {
+export default function Analitics({ latingNumberPerEmployee, latePerDays }) {
   return (
     <Wrapper>
       <TopBox>
@@ -14,11 +14,11 @@ export default function Analitics() {
       </TopBox>
       <Box>
         <h3>요일 별 지각 횟수</h3>
-        <BarChart />
+        <BarChart records={latePerDays} />
       </Box>
       <Box>
         <h3>직원 별 지각 횟수</h3>
-        <PieChart />
+        <PieChart records={latingNumberPerEmployee} />
       </Box>
     </Wrapper>
   );

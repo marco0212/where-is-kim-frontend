@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import Chart from "chart.js";
 import randomColor from "randomcolor";
 
-export default function PieChart({ records = [] }) {
+export default function PieChart({ records }) {
   const chart = useRef(null);
 
   useEffect(() => {
