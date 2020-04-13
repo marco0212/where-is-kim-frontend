@@ -5,11 +5,6 @@ import styled from "styled-components";
 
 export default function LineChart() {
   const chart = useRef(null);
-  const records = [
-    { name: "Jeong", times: 6 },
-    { name: "Kim", times: 9 },
-    { name: "Park", times: 1 },
-  ];
 
   useEffect(() => {
     const ctx = chart.current.getContext("2d");
@@ -19,13 +14,13 @@ export default function LineChart() {
     new Chart(ctx, {
       type: "line",
       data: {
-        labels: ["Red"],
+        labels: ["Mon", "Tue", "Wed", "Thu", "Fri"],
         datasets: [
           {
             borderColor: randomColor(),
             fill: 0,
             lineTension: 0,
-            data: [1],
+            data,
           },
         ],
       },
@@ -47,7 +42,7 @@ export default function LineChart() {
         labels: false,
       },
     });
-  }, [records]);
+  }, []);
 
   return (
     <Wrapper>
