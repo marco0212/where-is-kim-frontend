@@ -4,6 +4,7 @@ import {
   WORK_OFF_SUCCESS,
   UPDATE_ACTIVE_USERS,
   UPDATE_THREADS,
+  UPDATE_RECORDS,
 } from "../constants";
 import moment from "moment";
 
@@ -53,6 +54,12 @@ export default function (state = initialState, action) {
         }
         return acc;
       }, {});
+      const recordById = records.map((record) => record._id);
+      const allRecordIds = records.reduce((acc, record) => {
+        acc[record._id] = record;
+        return acc;
+      }, {});
+
       const onWorkingUser = [];
       const offWorkingUser = [];
 
@@ -78,6 +85,8 @@ export default function (state = initialState, action) {
         partById,
         allThreadDate,
         threadsByDate,
+        recordById,
+        allRecordIds,
         onWorkingUser,
         offWorkingUser,
       };
@@ -131,6 +140,20 @@ export default function (state = initialState, action) {
         ...state,
         allThreadDate,
         threadsByDate,
+      };
+    }
+    case UPDATE_RECORDS: {
+      const records = action.payload;
+      const recordById = records.map((record) => record._id);
+      const allRecordIds = records.reduce((acc, record) => {
+        acc[record._id] = record;
+        return acc;
+      }, {});
+
+      return {
+        ...state,
+        recordById,
+        allRecordIds,
       };
     }
   }

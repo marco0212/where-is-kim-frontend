@@ -16,6 +16,7 @@ import {
   UPDATE_ACTIVE_USERS,
   UPDATE_THREADS,
   UPDATE_CURRENT_PAGE,
+  UPDATE_RECORDS,
 } from "../constants";
 
 export const getTokenPending = () => ({ type: GET_TOKEN_PENDING });
@@ -66,4 +67,9 @@ export const updateThreads = (threads) => ({
 export const updateCurrentPage = (page) => ({
   type: UPDATE_CURRENT_PAGE,
   payload: page,
+});
+
+export const updateRecords = (records) => ({
+  type: UPDATE_RECORDS,
+  payload: records,
 });
