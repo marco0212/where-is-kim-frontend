@@ -8,6 +8,8 @@ export default function Dashboard({
   allpartsCount,
   onWorkingUserCount,
   offWorkingUserCount,
+  latingNumberPerEmployee,
+  mostLaterInMonth,
 }) {
   return (
     <Wrapper>
@@ -28,22 +30,27 @@ export default function Dashboard({
         <ThreadList threads={threads} />
       </ThreadBox>
       <ElseBox>
-        <h3>총 지각 횟수</h3>
+        <h3>직원 별 지각 횟수</h3>
         <div>
-          <PieChart />
+          <PieChart records={latingNumberPerEmployee} />
           <ChartLegend>
-            <li>정인엽</li>
-            <li>정인엽</li>
-            <li>정인엽</li>
+            {latingNumberPerEmployee.slice(0, 3).map((employee) => {
+              return <li>{employee.name}</li>;
+            })}
           </ChartLegend>
         </div>
       </ElseBox>
       <ElseBox>
         <h3>이번 달 지각 왕</h3>
         <div>
-          <ImageWrap>
-            <img src="https://dummyimage.com/600x600/000/fff" alt="User" />
-          </ImageWrap>
+          {
+            <ImageWrap>
+              <img
+                src={mostLaterInMonth.profilePic}
+                alt={mostLaterInMonth.username}
+              />
+            </ImageWrap>
+          }
           <p>
             성실함은 하늘의 도(道)요.
             <br />
@@ -82,14 +89,23 @@ const StatusBox = styled(Box)`
 const ThreadBox = styled(Box)`
   grid-row: 1/4;
   grid-column: 4/5;
+  position: relative;
   & > div {
-    padding: 15px;
-    margin: 0 0 20px;
+    position: absolute;
+    top: 68px;
+    bottom: 15px;
+    left: 15px;
+    right: 15px;
+    overflow-y: scroll;
     & > div {
-      margin-bottom: 0;
-    }
-    & > ul {
-      display: none;
+      padding: 15px;
+      margin: 0 0 20px;
+      & > div {
+        margin-bottom: 0;
+      }
+      & > ul {
+        display: none;
+      }
     }
   }
 `;

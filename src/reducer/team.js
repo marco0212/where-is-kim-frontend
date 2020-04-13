@@ -16,6 +16,8 @@ const initialState = {
   allpartIds: [],
   allThreadDate: [],
   threadsByDate: {},
+  recordById: {},
+  allRecordIds: [],
   onWorkingUser: [],
   offWorkingUser: [],
   connectedUser: [],
@@ -54,11 +56,11 @@ export default function (state = initialState, action) {
         }
         return acc;
       }, {});
-      const recordById = records.map((record) => record._id);
-      const allRecordIds = records.reduce((acc, record) => {
+      const recordById = records.reduce((acc, record) => {
         acc[record._id] = record;
         return acc;
       }, {});
+      const allRecordIds = records.map((record) => record._id);
 
       const onWorkingUser = [];
       const offWorkingUser = [];
@@ -144,11 +146,11 @@ export default function (state = initialState, action) {
     }
     case UPDATE_RECORDS: {
       const records = action.payload;
-      const recordById = records.map((record) => record._id);
-      const allRecordIds = records.reduce((acc, record) => {
+      const recordById = records.reduce((acc, record) => {
         acc[record._id] = record;
         return acc;
       }, {});
+      const allRecordIds = records.map((record) => record._id);
 
       return {
         ...state,
