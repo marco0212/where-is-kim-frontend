@@ -9,6 +9,7 @@ function ParticipantsContainer({
   teamId,
   updateCurrentPage,
   sendInvitingMail,
+  members,
 }) {
   const email = useInput("");
 
@@ -20,11 +21,12 @@ function ParticipantsContainer({
     updateCurrentPage("Participants");
   }, [updateCurrentPage]);
 
-  return <Participants email={email} onSubmit={onSubmit} />;
+  return <Participants email={email} onSubmit={onSubmit} members={members} />;
 }
 
 const mapStateToProps = (state) => ({
   teamId: state.team.id,
+  members: state.team.allpartIds.map((id) => state.team.partById[id]),
 });
 const mapDispatchToProps = (dispatch) => ({
   updateCurrentPage: (page) => dispatch(updateCurrentPage(page)),

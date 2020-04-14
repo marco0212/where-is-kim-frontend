@@ -2,7 +2,7 @@ import React from "react";
 import FormField from "../../components/FormField";
 import styled from "styled-components";
 
-export default function Participants({ email, onSubmit }) {
+export default function Participants({ email, onSubmit, members }) {
   return (
     <>
       <h3>Invite Team mate</h3>
@@ -23,15 +23,20 @@ export default function Participants({ email, onSubmit }) {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Jeong</td>
-            <td>
-              <select>
-                <option>admin</option>
-                <option>normal</option>
-              </select>
-            </td>
-          </tr>
+          {members.map((member) => {
+            const { username, isAdmin } = member;
+            return (
+              <tr>
+                <td>{username}</td>
+                <td>
+                  <select defaultValue={isAdmin ? "admin" : "normal"}>
+                    <option value="admin">admin</option>
+                    <option value="normal">normal</option>
+                  </select>
+                </td>
+              </tr>
+            );
+          })}
         </tbody>
       </Table>
       <Button>Save</Button>
