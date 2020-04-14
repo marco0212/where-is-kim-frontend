@@ -18,10 +18,8 @@ function RegisterTeamContainer({ userId, history, updateUserTeam }) {
     const response = await registerTeamAPI(
       teamName.value,
       userId,
-      {
-        latitude: latitude.value,
-        longitude: longitude.value,
-      },
+      latitude.value,
+      longitude.value,
       workOnTime.value,
       workOffTime.value,
       thumbnail

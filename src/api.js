@@ -48,7 +48,8 @@ export const signupAPI = (username, email, password, profile) => {
 export const registerTeamAPI = (
   teamName,
   createdBy,
-  location,
+  latitude,
+  longitude,
   workOnTime,
   workOffTime,
   thumbnail
@@ -57,7 +58,8 @@ export const registerTeamAPI = (
 
   data.append("teamName", teamName);
   data.append("createdBy", createdBy);
-  data.append("location", location);
+  data.append("latitude", latitude);
+  data.append("longitude", longitude);
   data.append("workOnTime", workOnTime);
   data.append("workOffTime", workOffTime);
   data.append("file", thumbnail);
