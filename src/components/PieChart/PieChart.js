@@ -9,7 +9,13 @@ export default function PieChart({ records }) {
     const ctx = chart.current.getContext("2d");
     const labels = records.map((record) => record.name);
     const data = records.map((record) => record.times);
-    const backgroundColor = records.map(() => randomColor());
+    const backgroundColor = records.map(() =>
+      randomColor({
+        luminosity: "bright",
+        format: "rgba",
+        alpha: 0.5,
+      })
+    );
 
     new Chart(ctx, {
       type: "pie",
@@ -18,16 +24,11 @@ export default function PieChart({ records }) {
         datasets: [
           {
             data,
-            backgroundColor,
             borderColor: "#666",
             borderWidth: 3,
+            backgroundColor,
           },
         ],
-      },
-      options: {
-        legend: {
-          display: false,
-        },
       },
     });
   }, [records]);
