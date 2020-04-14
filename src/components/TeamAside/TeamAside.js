@@ -9,7 +9,13 @@ export default function TeamAside({ teamPic, teamName, participants }) {
     <Aside>
       <LogoWrap>
         <ImageWrap>
-          <img src={teamPic} alt={teamName} />
+          {teamPic ? (
+            <img src={teamPic} alt={teamName} />
+          ) : (
+            <span role="img" aria-label={teamName}>
+              😟
+            </span>
+          )}
         </ImageWrap>
         <h3>{teamName}</h3>
       </LogoWrap>
@@ -37,6 +43,11 @@ const LogoWrap = styled.div`
   }
 `;
 const ImageWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  border: 3px solid #fff;
   width: 50px;
   height: 50px;
   border-radius: 10px;
@@ -44,6 +55,9 @@ const ImageWrap = styled.div`
   margin-right: 15px;
   & img {
     width: 100%;
+  }
+  & span {
+    font-size: 35px;
   }
 `;
 const Button = styled(Link)`

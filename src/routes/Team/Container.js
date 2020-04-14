@@ -15,6 +15,7 @@ function TeamContainer({
   history,
   initializeTeam,
   updateThreads,
+  thumbnail,
 }) {
   const { name } = match.params;
 
@@ -55,9 +56,9 @@ function TeamContainer({
       name={name}
       displayName={displayName}
       currentPage={currentPage}
-      profilePic="https://dummyimage.com/600x600/000/fff"
       participants={participants}
       threads={threads}
+      thumbnail={thumbnail}
     />
   );
 }
@@ -67,6 +68,7 @@ const mapStateToProps = (state) => ({
   displayName: state.team.displayName,
   currentPage: state.ui.currentPage,
   participants: state.team.allpartIds.map((id) => state.team.partById[id]),
+  thumbnail: state.team.thumbnail,
 });
 const mapDispatchToProps = (dispatch) => ({
   initializeTeam: (team) => dispatch(initializeTeam(team)),

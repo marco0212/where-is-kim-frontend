@@ -33,12 +33,13 @@ export default function (state = initialState, action) {
         participants,
         records,
         display_name: displayName,
-        admins
+        thumbnail,
+        admins,
       } = action.payload;
       const allpartIds = participants.map((part) => part._id);
       const partById = participants.reduce((acc, part) => {
         const { _id: id, username, email } = part;
-        const isAdmin = !!admins.filter(adminId => adminId === id ).length;
+        const isAdmin = !!admins.filter((adminId) => adminId === id).length;
         acc[id] = { id, username, email, isAdmin };
         return acc;
       }, {});
@@ -93,6 +94,7 @@ export default function (state = initialState, action) {
         allRecordIds,
         onWorkingUser,
         offWorkingUser,
+        thumbnail,
       };
     case WORK_ON_SUCCESS: {
       return {
