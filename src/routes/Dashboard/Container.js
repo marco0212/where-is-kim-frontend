@@ -30,7 +30,13 @@ function DashboardContainer({
 
 const mapStateToProps = (state) => {
   const today = moment().format("YYYY-MM-DD");
-  const threads = state.team.threadsByDate[today] || [];
+  const threads = state.team.allThreadIds.reduce((acc, id) => {
+    const thread = state.team.threadById[id];
+    if (moment(thread.createdAt).format("YYYY-MM-DD") === today) {
+      acc.push(thread);
+    }
+    return acc;
+  }, []);
   const latingNumberStore = state.team.allRecordIds.reduce((acc, id) => {
     const record = state.team.recordById[id];
     const isLate = record.is_late;

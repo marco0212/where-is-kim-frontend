@@ -2,14 +2,16 @@ import React from "react";
 import ThreadItem from "../ThreadItem/ThreadItem";
 
 export default function ThreadList({ threads }) {
+  console.log(threads);
   return (
     <div>
       {threads.map((thread) => {
+        console.log(thread);
         const {
-          _id: id,
-          created_by: { username, profile },
+          id,
+          createdBy: { username, profile },
           text,
-          created_at: createdAt,
+          createdAt,
           likes,
           comments,
         } = thread;

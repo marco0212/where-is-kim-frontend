@@ -14,6 +14,8 @@ const initialState = {
   location: {},
   partById: {},
   allpartIds: [],
+  allThreadIds: [],
+  threadById: {},
   allThreadDate: [],
   threadsByDate: {},
   recordById: {},
@@ -43,20 +45,18 @@ export default function (state = initialState, action) {
         acc[id] = { id, username, email, isAdmin, profile };
         return acc;
       }, {});
-      const allThreadDate = threads.reduce((acc, thread) => {
-        const date = moment(thread.created_at).format("YYYY-MM-DD");
-        if (acc.indexOf(date) === -1) {
-          acc.push(date);
-        }
-        return acc;
-      }, []);
-      const threadsByDate = threads.reduce((acc, thread) => {
-        const date = moment(thread.created_at).format("YYYY-MM-DD");
-        if (acc[date]) {
-          acc[date].push(thread);
-        } else {
-          acc[date] = [thread];
-        }
+      const allThreadIds = threads.map((thread) => thread._id);
+      const threadById = threads.reduce((acc, thread) => {
+        const {
+          _id: id,
+          likes,
+          created_by: createdBy,
+          text,
+          comments,
+          created_at: createdAt,
+        } = thread;
+        acc[id] = { id, likes, createdBy, text, comments, createdAt };
+
         return acc;
       }, {});
       const recordById = records.reduce((acc, record) => {
@@ -88,8 +88,8 @@ export default function (state = initialState, action) {
         location,
         allpartIds,
         partById,
-        allThreadDate,
-        threadsByDate,
+        allThreadIds,
+        threadById,
         recordById,
         allRecordIds,
         onWorkingUser,
@@ -126,26 +126,25 @@ export default function (state = initialState, action) {
 
     case UPDATE_THREADS: {
       const threads = action.payload;
-      const allThreadDate = threads.reduce((acc, thread) => {
-        const date = moment(thread.created_at).format("YYYY-MM-DD");
-        if (acc.indexOf(date) === -1) {
-          acc.push(date);
-        }
-        return acc;
-      }, []);
-      const threadsByDate = threads.reduce((acc, thread) => {
-        const date = moment(thread.created_at).format("YYYY-MM-DD");
-        if (acc[date]) {
-          acc[date].push(thread);
-        } else {
-          acc[date] = [thread];
-        }
+      const allThreadIds = threads.map((thread) => thread._id);
+      const threadById = threads.reduce((acc, thread) => {
+        const {
+          _id: id,
+          likes,
+          created_by: createdBy,
+          text,
+          comments,
+          created_at: createdAt,
+        } = thread;
+        acc[id] = { id, likes, createdBy, text, comments, createdAt };
+
         return acc;
       }, {});
+
       return {
         ...state,
-        allThreadDate,
-        threadsByDate,
+        allThreadIds,
+        threadById,
       };
     }
     case UPDATE_RECORDS: {
