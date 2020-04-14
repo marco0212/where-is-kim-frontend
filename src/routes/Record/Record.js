@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 import styled from "styled-components";
 import { ButtonWrap } from "../../components/LoginForm/LoginForm";
-import RecordButton from "../../components/RecordButton";
+import RecordButton from "../../components/RecordButton/RecordButton";
 
 const kakao = window.kakao;
 

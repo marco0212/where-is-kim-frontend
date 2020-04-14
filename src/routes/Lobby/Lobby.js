@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import LoginForm from "../../components/LoginForm/Container";
-import TeamList from "../../components/TeamList";
+import TeamList from "../../components/TeamList/TeamList";
 import { ButtonWrap } from "../../components/LoginForm/LoginForm";
 import { Link } from "react-router-dom";
 

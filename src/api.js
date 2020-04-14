@@ -14,7 +14,6 @@ const getCommentThreadUrl = (id) =>
 const getRecordUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/records`;
 const getInviteUrl = (id, email) =>
   `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/invite`;
-
 const JWT_TEST = `${WHERE_IS_KIM_BACK_URL}/`;
 
 export const getTokenAPI = (email, password) => {

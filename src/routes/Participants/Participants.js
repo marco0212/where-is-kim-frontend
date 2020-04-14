@@ -1,5 +1,5 @@
 import React from "react";
-import FormField from "../../components/FormField";
+import FormField from "../../components/FormField/FormField";
 import styled from "styled-components";
 
 export default function Participants({ email, onSubmit, members }) {
@@ -24,9 +24,9 @@ export default function Participants({ email, onSubmit, members }) {
         </thead>
         <tbody>
           {members.map((member) => {
-            const { username, isAdmin } = member;
+            const { id, username, isAdmin } = member;
             return (
-              <tr>
+              <tr key={id}>
                 <td>{username}</td>
                 <td>
                   <select defaultValue={isAdmin ? "admin" : "normal"}>

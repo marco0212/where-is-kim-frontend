@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import FormField from "../FormField";
+import FormField from "../FormField/FormField";
 import styled from "styled-components";
 
 export default function LoginForm({ onSubmit, email, password }) {

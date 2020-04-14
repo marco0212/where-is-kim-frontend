@@ -1,5 +1,5 @@
 import React from "react";
-import FormField from "../../components/FormField";
+import FormField from "../../components/FormField/FormField";
 import { Link } from "react-router-dom";
 import { ButtonWrap } from "../../components/LoginForm/LoginForm";
 import { Wrapper } from "../Signup/Signup";

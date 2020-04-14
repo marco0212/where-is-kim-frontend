@@ -1,12 +1,11 @@
-import React, { useState } from "react";
-import useInput from "../../hooks/useInput";
+import React from "react";
 import {
   FaThumbsUp,
   FaRegThumbsUp,
   FaCommentDots,
   FaUser,
 } from "react-icons/fa";
-import FormField from "../FormField";
+import FormField from "../FormField/FormField";
 import styled from "styled-components";
 import moment from "moment";
 

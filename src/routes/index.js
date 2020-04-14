@@ -4,7 +4,7 @@ import Lobby from "./Lobby/Container";
 import Signup from "./Signup/Container";
 import Team from "./Team/Container";
 import RegisterTeam from "./RegisterTeam/Container";
-import Confirm from "./Confirm";
+import Confirm from "./Confirm/Container";
 
 const BeforeLogin = () => {
   return (
