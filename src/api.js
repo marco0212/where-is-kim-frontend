@@ -29,17 +29,17 @@ export const getTokenAPI = (email, password) => {
   return fetch(GET_TOKEN, options);
 };
 
-export const signupAPI = (username, email, password) => {
+export const signupAPI = (username, email, password, profile) => {
+  const data = new FormData();
+
+  data.append("username", username);
+  data.append("email", email);
+  data.append("password", password);
+  data.append("profile", profile);
+
   const options = {
-    headers: {
-      "Content-Type": "application/json",
-    },
     method: "POST",
-    body: JSON.stringify({
-      username,
-      email,
-      password,
-    }),
+    body: data,
   };
 
   return fetch(SIGNUP, options);

@@ -7,7 +7,7 @@ export default function ThreadList({ threads }) {
       {threads.map((thread) => {
         const {
           _id: id,
-          created_by: { username },
+          created_by: { username, profile },
           text,
           created_at: createdAt,
           likes,
@@ -17,6 +17,7 @@ export default function ThreadList({ threads }) {
         return (
           <ThreadItem
             key={id}
+            profile={profile}
             username={username}
             text={text}
             createdAt={createdAt}

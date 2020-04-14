@@ -38,9 +38,9 @@ export default function (state = initialState, action) {
       } = action.payload;
       const allpartIds = participants.map((part) => part._id);
       const partById = participants.reduce((acc, part) => {
-        const { _id: id, username, email } = part;
+        const { _id: id, username, email, profile } = part;
         const isAdmin = !!admins.filter((adminId) => adminId === id).length;
-        acc[id] = { id, username, email, isAdmin };
+        acc[id] = { id, username, email, isAdmin, profile };
         return acc;
       }, {});
       const allThreadDate = threads.reduce((acc, thread) => {

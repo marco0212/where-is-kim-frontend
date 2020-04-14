@@ -1,12 +1,18 @@
 import React, { useState } from "react";
 import useInput from "../../hooks/useInput";
-import { FaThumbsUp, FaRegThumbsUp, FaCommentDots } from "react-icons/fa";
+import {
+  FaThumbsUp,
+  FaRegThumbsUp,
+  FaCommentDots,
+  FaUser,
+} from "react-icons/fa";
 import FormField from "../FormField";
 import styled from "styled-components";
 import moment from "moment";
 
 export default function ThreadItem({
   username,
+  profile,
   text,
   createdAt,
   likes,
@@ -21,7 +27,7 @@ export default function ThreadItem({
     <Wrapper>
       <ThreadItemTop>
         <ImageWrap>
-          <img src="https://dummyimage.com/600x600/000/fff" alt={username} />
+          {profile ? <img src={profile} alt={username} /> : <FaUser />}
         </ImageWrap>
         <div>
           <strong>{username}</strong>
@@ -99,13 +105,21 @@ const ThreadItemBottom = styled.ul`
   }
 `;
 const ImageWrap = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 50px;
   height: 50px;
   border-radius: 10px;
   overflow: hidden;
   margin-right: 15px;
+  background-color: #eee;
   & img {
     width: 100%;
+  }
+  & svg {
+    font-size: 30px;
+    color: #666;
   }
   & + div {
     flex: 1;

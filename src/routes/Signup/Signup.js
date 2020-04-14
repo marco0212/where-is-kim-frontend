@@ -4,12 +4,19 @@ import { Link } from "react-router-dom";
 import styled from "styled-components";
 import { ButtonWrap } from "../../components/LoginForm/LoginForm";
 
-export default function Signup({ onSubmit, username, email, password }) {
+export default function Signup({
+  onSubmit,
+  username,
+  email,
+  password,
+  fileInput,
+}) {
   return (
     <Wrapper>
       <div>
         <h3>RESISTER</h3>
         <form onSubmit={onSubmit}>
+          <input type="file" ref={fileInput} />
           <FormField
             title="Name"
             type="text"
