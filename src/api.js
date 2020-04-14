@@ -50,20 +50,21 @@ export const registerTeamAPI = (
   createdBy,
   location,
   workOnTime,
-  workOffTime
+  workOffTime,
+  thumbnail
 ) => {
+  const data = new FormData();
+
+  data.append("teamName", teamName);
+  data.append("createdBy", createdBy);
+  data.append("location", location);
+  data.append("workOnTime", workOnTime);
+  data.append("workOffTime", workOffTime);
+  data.append("file", thumbnail);
+
   const options = {
-    headers: {
-      "Content-Type": "application/json",
-    },
     method: "POST",
-    body: JSON.stringify({
-      teamName,
-      createdBy,
-      location,
-      workOnTime,
-      workOffTime,
-    }),
+    body: data,
   };
 
   return fetch(REGISTER_TEAM, options);

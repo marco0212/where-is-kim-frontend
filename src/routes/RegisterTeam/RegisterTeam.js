@@ -11,6 +11,7 @@ export default function RegisterTeam({
   longitude,
   workOnTime,
   workOffTime,
+  fileInput,
 }) {
   return (
     <Wrapper>
@@ -23,6 +24,7 @@ export default function RegisterTeam({
             controller={teamName}
             placeholder="Type your team name"
           />
+          <input type="file" ref={fileInput} />
           <FormField
             title="Latitude"
             type="text"

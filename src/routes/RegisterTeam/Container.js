@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import { connect } from "react-redux";
 import RegisterTeam from "./RegisterTeam";
 import useInput from "../../hooks/useInput";
@@ -11,9 +11,10 @@ function RegisterTeamContainer({ userId, history, updateUserTeam }) {
   const longitude = useInput("");
   const workOnTime = useInput("09:00");
   const workOffTime = useInput("18:00");
+  const fileInput = useRef(null);
   const onSubmit = async (e) => {
     e.preventDefault();
-
+    const thumbnail = fileInput.current.files[0];
     const response = await registerTeamAPI(
       teamName.value,
       userId,
@@ -22,7 +23,8 @@ function RegisterTeamContainer({ userId, history, updateUserTeam }) {
         longitude: longitude.value,
       },
       workOnTime.value,
-      workOffTime.value
+      workOffTime.value,
+      thumbnail
     );
 
     const { result } = await response.json();
@@ -40,6 +42,7 @@ function RegisterTeamContainer({ userId, history, updateUserTeam }) {
       latitude={latitude}
       workOnTime={workOnTime}
       workOffTime={workOffTime}
+      fileInput={fileInput}
       onSubmit={onSubmit}
     />
   );
