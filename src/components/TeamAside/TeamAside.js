@@ -2,20 +2,14 @@ import React from "react";
 import styled from "styled-components";
 import UserList from "../UserList/UserList";
 import { Link } from "react-router-dom";
-import { FaSignOutAlt } from "react-icons/fa";
+import { FaSignOutAlt, FaUserFriends } from "react-icons/fa";
 
 export default function TeamAside({ teamPic, teamName, participants }) {
   return (
     <Aside>
       <LogoWrap>
         <ImageWrap>
-          {teamPic ? (
-            <img src={teamPic} alt={teamName} />
-          ) : (
-            <span role="img" aria-label={teamName}>
-              😟
-            </span>
-          )}
+          {teamPic ? <img src={teamPic} alt={teamName} /> : <FaUserFriends />}
         </ImageWrap>
         <h3>{teamName}</h3>
       </LogoWrap>
@@ -56,8 +50,9 @@ const ImageWrap = styled.div`
   & img {
     width: 100%;
   }
-  & span {
-    font-size: 35px;
+  & svg {
+    font-size: 30px;
+    color: #666;
   }
 `;
 const Button = styled(Link)`
