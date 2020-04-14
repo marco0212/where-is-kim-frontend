@@ -20,8 +20,10 @@ export default function ThreadItem({
   comments,
   comment,
   onCommentClick,
+  onCommentKeydown,
   onLikeClick,
   userId,
+  userNameById,
 }) {
   return (
     <Wrapper>
@@ -55,10 +57,22 @@ export default function ThreadItem({
       </ThreadItemBottom>
       {showComment ? (
         <div>
-          <CommentInput
+          <ul>
+            {comments.map((comment) => {
+              const { _id: id, author, text } = comment;
+              return (
+                <li key={id}>
+                  {text}
+                  {userNameById[author]}
+                </li>
+              );
+            })}
+          </ul>
+          <FormField
             type="text"
             controller={comment}
             placeholder="댓글을 입력하세요."
+            onKeyPress={onCommentKeydown}
           />
         </div>
       ) : null}
@@ -137,8 +151,4 @@ const ThreadButtonWrap = styled.button`
     margin-right: 10px;
     color: #8a5c8c;
   }
-`;
-const CommentInput = styled(FormField)`
-  margin-top: 15px;
-  font-size: 14px;
 `;

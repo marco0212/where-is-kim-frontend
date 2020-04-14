@@ -6,6 +6,7 @@ import {
   UPDATE_THREADS,
   UPDATE_RECORDS,
   UPDATE_THREAD_LIKES,
+  UPDATE_THREAD_COMMENT,
 } from "../constants";
 import moment from "moment";
 
@@ -172,6 +173,19 @@ export default function (state = initialState, action) {
           [id]: {
             ...state.threadById[id],
             likes,
+          },
+        },
+      };
+    }
+    case UPDATE_THREAD_COMMENT: {
+      const { id, comments } = action.payload;
+      return {
+        ...state,
+        threadById: {
+          ...state.threadById,
+          [id]: {
+            ...state.threadById[id],
+            comments: state.threadById[id].comments.concat(comments),
           },
         },
       };

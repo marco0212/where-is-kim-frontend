@@ -4,7 +4,7 @@ import styled from "styled-components";
 export default function FormField({
   title,
   type,
-  controller,
+  controller: { value, onChange },
   placeholder,
   required = true,
   onKeyPress,
@@ -14,7 +14,8 @@ export default function FormField({
       {title && <legend>{title}</legend>}
       <input
         type={type}
-        {...controller}
+        value={value}
+        onChange={onChange}
         placeholder={placeholder}
         onKeyPress={onKeyPress}
         required={required}
@@ -23,7 +24,7 @@ export default function FormField({
   );
 }
 
-const Wrapper = styled.fieldset`
+export const Wrapper = styled.fieldset`
   font-size: 16px;
   margin-bottom: 21px;
   &:last-of-type {

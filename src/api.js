@@ -131,6 +131,21 @@ export const toggleLikeAPI = (threadId, userId) => {
   return fetch(getToggleLikeThreadUrl(threadId), options);
 };
 
+export const addComment = (commentId, userId, text) => {
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      userId,
+      text,
+    }),
+  };
+
+  return fetch(getCommentThreadUrl(commentId), options);
+};
+
 export const getRecordAPI = (teamId, userId) => {
   const options = {
     headers: {
