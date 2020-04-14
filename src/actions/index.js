@@ -17,6 +17,9 @@ import {
   UPDATE_THREADS,
   UPDATE_CURRENT_PAGE,
   UPDATE_RECORDS,
+  SEND_INVITING_MAIL_PENDING,
+  SEND_INVITING_MAIL_SUCCESS,
+  SEND_INVITING_MAIL_FAILURE,
 } from "../constants";
 
 export const getTokenPending = () => ({ type: GET_TOKEN_PENDING });
@@ -72,4 +75,14 @@ export const updateCurrentPage = (page) => ({
 export const updateRecords = (records) => ({
   type: UPDATE_RECORDS,
   payload: records,
+});
+
+export const sendInvitingMailPending = () => ({
+  type: SEND_INVITING_MAIL_PENDING,
+});
+export const sendInvitingMailSuccess = () => ({
+  type: SEND_INVITING_MAIL_SUCCESS,
+});
+export const sendInvitingMailFailure = () => ({
+  type: SEND_INVITING_MAIL_FAILURE,
 });

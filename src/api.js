@@ -12,6 +12,8 @@ const getToggleLikeThreadUrl = (id) =>
 const getCommentThreadUrl = (id) =>
   `${WHERE_IS_KIM_BACK_URL}/api/thread/${id}/comment`;
 const getRecordUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/records`;
+const getInviteUrl = (id, email) =>
+  `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/invite`;
 
 const JWT_TEST = `${WHERE_IS_KIM_BACK_URL}/`;
 
@@ -140,6 +142,20 @@ export const getRecordAPI = (teamId, userId) => {
   };
 
   return fetch(getRecordUrl(teamId), options);
+};
+
+export const inviteUserAPI = (teamId, email) => {
+  const options = {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    method: "POST",
+    body: JSON.stringify({
+      memberEmail: email,
+    }),
+  };
+
+  return fetch(getInviteUrl(teamId), options);
 };
 
 export const testAPI = (token) => {

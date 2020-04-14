@@ -9,8 +9,11 @@ import {
   workOffPending,
   workOffSuccess,
   workOffFailure,
+  sendInvitingMailPending,
+  sendInvitingMailSuccess,
+  sendInvitingMailFailure,
 } from "../actions";
-import { getTokenAPI, workOnAPI, workOffAPI } from "../api";
+import { getTokenAPI, workOnAPI, workOffAPI, inviteUserAPI } from "../api";
 import { emitAddThread } from "../socket";
 
 export const getToken = (email, password) => async (dispatch) => {
@@ -59,5 +62,15 @@ export const workOff = (teamId, userId) => async (dispatch) => {
     emitAddThread();
   } catch (err) {
     dispatch(workOffFailure());
+  }
+};
+
+export const sendInvitingMail = (teamId, email) => async (dispatch) => {
+  try {
+    dispatch(sendInvitingMailPending());
+    await inviteUserAPI(teamId, email);
+    dispatch(sendInvitingMailSuccess());
+  } catch {
+    dispatch(sendInvitingMailFailure());
   }
 };

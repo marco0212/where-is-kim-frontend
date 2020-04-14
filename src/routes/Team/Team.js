@@ -11,7 +11,7 @@ export default function Team({ name, currentPage, displayName, profilePic }) {
   return (
     <Wrapper>
       <TeamAside teamPic={profilePic} teamName={displayName} />
-      <TeamHeader teamName={name} currentPage={currentPage} />
+      <TeamHeader teamName={name} currentPage={currentPage}/>
       <Main>
         <Switch>
           <Route exact path="/team/:name" component={Threads} />

@@ -2,12 +2,16 @@ import React from "react";
 import FormField from "../../components/FormField";
 import styled from "styled-components";
 
-export default function Participants() {
+export default function Participants({ email, onSubmit }) {
   return (
     <>
       <h3>Invite Team mate</h3>
-      <Form>
-        <FormField type="email" placeholder="Type the email of the invitees" />
+      <Form onSubmit={onSubmit}>
+        <FormField
+          type="email"
+          placeholder="Type the email of the invitees"
+          controller={email}
+        />
         <Button>Send</Button>
       </Form>
       <h3>Permissions</h3>
