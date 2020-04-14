@@ -57,17 +57,17 @@ export default function ThreadItem({
       </ThreadItemBottom>
       {showComment ? (
         <div>
-          <ul>
+          <CommentsList>
             {comments.map((comment) => {
               const { _id: id, author, text } = comment;
               return (
                 <li key={id}>
-                  {text}
-                  {userNameById[author]}
+                  <strong>{userNameById[author]}</strong>
+                  <p>{text}</p>
                 </li>
               );
             })}
-          </ul>
+          </CommentsList>
           <FormField
             type="text"
             controller={comment}
@@ -115,7 +115,7 @@ const ThreadItemBottom = styled.ul`
     margin-right: 15px;
   }
   & + div {
-    margin-top: 15px;
+    margin-top: 20px;
   }
 `;
 const ImageWrap = styled.div`
@@ -150,5 +150,21 @@ const ThreadButtonWrap = styled.button`
     font-size: 20px;
     margin-right: 10px;
     color: #8a5c8c;
+  }
+`;
+const CommentsList = styled.ul`
+  margin-bottom: 20px;
+  & li {
+    display: flex;
+    font-size: 15px;
+    margin-bottom: 10px;
+    & strong {
+      font-weight: bold;
+      margin-right: 10px;
+    }
+  }
+  & + fieldset input {
+    font-size: 14px;
+    height: 30px;
   }
 `;
