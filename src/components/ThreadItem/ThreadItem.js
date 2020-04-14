@@ -16,13 +16,13 @@ export default function ThreadItem({
   text,
   createdAt,
   likes,
+  showComment,
   comments,
+  comment,
+  onCommentClick,
+  onLikeClick,
   userId,
 }) {
-  const [showComment, setShowComment] = useState(false);
-  const comment = useInput("");
-  const toggleShowComment = () => setShowComment(!showComment);
-
   return (
     <Wrapper>
       <ThreadItemTop>
@@ -37,7 +37,7 @@ export default function ThreadItem({
       </ThreadItemTop>
       <ThreadItemBottom>
         <li>
-          <ThreadButtonWrap>
+          <ThreadButtonWrap onClick={onLikeClick}>
             {likes.filter((id) => id === userId).length ? (
               <FaThumbsUp />
             ) : (
@@ -47,7 +47,7 @@ export default function ThreadItem({
           </ThreadButtonWrap>
         </li>
         <li>
-          <ThreadButtonWrap onClick={toggleShowComment}>
+          <ThreadButtonWrap onClick={onCommentClick}>
             <FaCommentDots />
             {comments.length}
           </ThreadButtonWrap>

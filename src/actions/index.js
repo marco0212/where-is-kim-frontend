@@ -20,6 +20,7 @@ import {
   SEND_INVITING_MAIL_PENDING,
   SEND_INVITING_MAIL_SUCCESS,
   SEND_INVITING_MAIL_FAILURE,
+  UPDATE_THREAD_LIKES,
 } from "../constants";
 
 export const getTokenPending = () => ({ type: GET_TOKEN_PENDING });
@@ -85,4 +86,9 @@ export const sendInvitingMailSuccess = () => ({
 });
 export const sendInvitingMailFailure = () => ({
   type: SEND_INVITING_MAIL_FAILURE,
+});
+
+export const updateThreadLikes = (id, likes) => ({
+  type: UPDATE_THREAD_LIKES,
+  payload: { id, likes },
 });

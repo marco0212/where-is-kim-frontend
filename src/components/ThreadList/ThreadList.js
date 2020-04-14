@@ -1,12 +1,10 @@
 import React from "react";
-import ThreadItem from "../ThreadItem/ThreadItem";
+import ThreadItem from "../ThreadItem/Container";
 
 export default function ThreadList({ threads }) {
-  console.log(threads);
   return (
     <div>
       {threads.map((thread) => {
-        console.log(thread);
         const {
           id,
           createdBy: { username, profile },
@@ -19,6 +17,7 @@ export default function ThreadList({ threads }) {
         return (
           <ThreadItem
             key={id}
+            id={id}
             profile={profile}
             username={username}
             text={text}

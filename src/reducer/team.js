@@ -5,6 +5,7 @@ import {
   UPDATE_ACTIVE_USERS,
   UPDATE_THREADS,
   UPDATE_RECORDS,
+  UPDATE_THREAD_LIKES,
 } from "../constants";
 import moment from "moment";
 
@@ -159,6 +160,20 @@ export default function (state = initialState, action) {
         ...state,
         recordById,
         allRecordIds,
+      };
+    }
+
+    case UPDATE_THREAD_LIKES: {
+      const { id, likes } = action.payload;
+      return {
+        ...state,
+        threadById: {
+          ...state.threadById,
+          [id]: {
+            ...state.threadById[id],
+            likes,
+          },
+        },
       };
     }
   }
