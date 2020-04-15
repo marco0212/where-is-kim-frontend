@@ -1,6 +1,6 @@
 import { INITIALIZE_USER, UPDATE_USER_TEAM } from "../constants";
 
-const initialState = {
+export const initialState = {
   id: "",
   username: "",
   email: "",
