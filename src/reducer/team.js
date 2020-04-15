@@ -7,6 +7,7 @@ import {
   UPDATE_RECORDS,
   UPDATE_THREAD_LIKES,
   UPDATE_THREAD_COMMENT,
+  UPDATE_TEAM_ADMINS,
 } from "../constants";
 import moment from "moment";
 

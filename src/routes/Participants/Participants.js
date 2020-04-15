@@ -1,12 +1,20 @@
 import React from "react";
 import FormField from "../../components/FormField/FormField";
 import styled from "styled-components";
+import MemberPermissionItem from "../../components/MemberPermissionItem/MemberPermissionItem";
 
-export default function Participants({ email, onSubmit, members }) {
+export default function Participants({
+  email,
+  onMailFormSubmit,
+  members,
+  memberAdminStore,
+  onSelectChange,
+  onPermissionSubmit,
+}) {
   return (
     <>
       <h3>Invite Team mate</h3>
-      <Form onSubmit={onSubmit}>
+      <Form onSubmit={onMailFormSubmit}>
         <FormField
           type="email"
           placeholder="Type the email of the invitees"
@@ -15,31 +23,31 @@ export default function Participants({ email, onSubmit, members }) {
         <Button>Send</Button>
       </Form>
       <h3>Permissions</h3>
-      <Table>
-        <thead>
-          <tr>
-            <td>Name</td>
-            <td>Level</td>
-          </tr>
-        </thead>
-        <tbody>
-          {members.map((member) => {
-            const { id, username, isAdmin } = member;
-            return (
-              <tr key={id}>
-                <td>{username}</td>
-                <td>
-                  <select defaultValue={isAdmin ? "admin" : "normal"}>
-                    <option value="admin">admin</option>
-                    <option value="normal">normal</option>
-                  </select>
-                </td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </Table>
-      <Button>Save</Button>
+      <form onSubmit={onPermissionSubmit}>
+        <Table>
+          <thead>
+            <tr>
+              <td>Name</td>
+              <td>Level</td>
+            </tr>
+          </thead>
+          <tbody>
+            {members.map((member) => {
+              const { id, username } = member;
+              return (
+                <MemberPermissionItem
+                  key={id}
+                  id={id}
+                  username={username}
+                  isAdmin={memberAdminStore[id]}
+                  onChange={onSelectChange}
+                />
+              );
+            })}
+          </tbody>
+        </Table>
+        <Button>Save</Button>
+      </form>
     </>
   );
 }
