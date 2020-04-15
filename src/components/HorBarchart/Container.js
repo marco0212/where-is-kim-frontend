@@ -1,10 +1,59 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import HorBarchart from "./HorBarchart";
 import { connect } from "react-redux";
 import moment from "moment";
+import Chart from "chart.js";
+import randomColor from "randomcolor";
 
 function HorBarchartContainer({ records }) {
-  return <HorBarchart records={records} />;
+  const chartRef = useRef(null);
+  const data = records.map((record) => record.workingTime);
+  const labels = records.map((record) => record.username);
+  const backgroundColor = data.map(() =>
+    randomColor({
+      luminosity: "bright",
+      format: "rgba",
+      alpha: 0.5,
+    })
+  );
+
+  useEffect(() => {
+    const ctx = chartRef.current.getContext("2d");
+
+    new Chart(ctx, {
+      type: "horizontalBar",
+      data: {
+        labels,
+        datasets: [
+          {
+            backgroundColor,
+            borderColor: "#666",
+            borderWidth: 3,
+            data,
+          },
+        ],
+      },
+      options: {
+        maintainAspectRatio: false,
+        legend: {
+          display: false,
+        },
+        scales: {
+          xAxes: [
+            {
+              ticks: {
+                beginAtZero: true,
+                stepSize: 1,
+              },
+            },
+          ],
+        },
+        labels: false,
+      },
+    });
+  }, [data, labels, backgroundColor]);
+
+  return <HorBarchart records={records} chartRef={chartRef} />;
 }
 
 const mapStateToProps = (state) => {
