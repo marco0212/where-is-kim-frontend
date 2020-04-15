@@ -9,7 +9,7 @@ export default function Dashboard({
   onWorkingUserCount,
   offWorkingUserCount,
   latingNumberPerEmployee,
-  mostLaterInMonth,
+  mostLater,
 }) {
   return (
     <Wrapper>
@@ -43,14 +43,12 @@ export default function Dashboard({
       <ElseBox>
         <h3>이번 달 지각 왕</h3>
         <div>
-          {
+          <div>
             <ImageWrap>
-              <img
-                src={mostLaterInMonth.profilePic}
-                alt={mostLaterInMonth.username}
-              />
+              <img src={mostLater.profile} alt={mostLater.username} />
             </ImageWrap>
-          }
+            <strong>{mostLater.username}</strong>
+          </div>
           <p>
             성실함은 하늘의 도(道)요.
             <br />
@@ -114,6 +112,9 @@ const ElseBox = styled(Box)`
   & > div {
     display: flex;
     align-items: center;
+    & > div {
+      margin-right: 30px;
+    }
   }
   & canvas {
     max-width: 60%;
@@ -136,9 +137,11 @@ const ImageWrap = styled.div`
   height: 100px;
   border-radius: 10px;
   overflow: hidden;
-  margin-right: 15px;
-  & + p {
-    margin-left: 30px;
+  & + strong {
+    text-align: center;
+    margin-top: 5px;
+    display: block;
     font-size: 16px;
+    font-weight: bold;
   }
 `;

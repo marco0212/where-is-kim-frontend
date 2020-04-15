@@ -11,7 +11,7 @@ function DashboardContainer({
   offWorkingUserCount,
   updateCurrentPage,
   latingNumberPerEmployee,
-  mostLaterInMonth,
+  mostLater,
 }) {
   useEffect(() => {
     updateCurrentPage("Dashboard");
@@ -23,7 +23,7 @@ function DashboardContainer({
       onWorkingUserCount={onWorkingUserCount}
       offWorkingUserCount={offWorkingUserCount}
       latingNumberPerEmployee={latingNumberPerEmployee}
-      mostLaterInMonth={mostLaterInMonth}
+      mostLater={mostLater}
     />
   );
 }
@@ -37,6 +37,7 @@ const mapStateToProps = (state) => {
     }
     return acc;
   }, []);
+
   const latingNumberStore = state.team.allRecordIds.reduce((acc, id) => {
     const record = state.team.recordById[id];
     const isLate = record.is_late;
@@ -55,13 +56,36 @@ const mapStateToProps = (state) => {
     times: latingNumberStore[id],
   }));
 
+  const recordsInWeek = state.team.allRecordIds
+    .map((id) => state.team.recordById[id])
+    .filter((record) => {
+      const monday = moment().day(1);
+      const { work_on: workOn } = record;
+      return moment(workOn).isAfter(monday);
+    });
+  const userLatingStore = recordsInWeek.reduce((acc, record) => {
+    const { is_late, recorded_by } = record;
+    if (is_late) {
+      if (acc[recorded_by]) {
+        acc[recorded_by] += 1;
+      } else {
+        acc[recorded_by] = 1;
+      }
+    }
+    return acc;
+  }, {});
+  const maxCount = Math.max.apply(null, Object.values(userLatingStore));
+  const mostLatersId = Object.keys(userLatingStore).find(
+    (id) => userLatingStore[id] === maxCount
+  );
+  const mostLater = state.team.partById[mostLatersId];
   return {
     threads,
     allpartsCount: state.team.allpartIds.length,
     onWorkingUserCount: state.team.onWorkingUser.length,
     offWorkingUserCount: state.team.offWorkingUser.length,
     latingNumberPerEmployee,
-    mostLaterInMonth: {},
+    mostLater,
   };
 };
 const mapDispatchToProps = (dispatch) => ({
