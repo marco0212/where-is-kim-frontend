@@ -3,7 +3,7 @@ import { connect } from "react-redux";
 import { getToken } from "../../thunks";
 
 const mapStateToProps = (state) => ({
-  isLogin: state.status.isLogin,
+  isLogin: state.ui.lobby.isLogin,
   teams: state.user.allTeamIds.map((id) => state.user.teamById[id]),
 });
 const mapDispatchToProps = (dispatch) => ({

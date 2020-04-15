@@ -5,12 +5,18 @@ import {
   WORK_OFF_PENDING,
   WORK_OFF_SUCCESS,
   WORK_OFF_FAILURE,
-  INITIALIZE_TEAM,
   UPDATE_CURRENT_PAGE,
+  GET_TOKEN_PENDING,
+  GET_TOKEN_SUCCESS,
+  GET_TOKEN_FAILURE,
 } from "../constants";
 
 const initialState = {
   currentPage: "",
+  lobby: {
+    isLogin: false,
+    isLoading: false,
+  },
   record: {
     isLoading: false,
   },
@@ -18,6 +24,31 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case GET_TOKEN_PENDING:
+      return {
+        ...state,
+        lobby: {
+          ...state.lobby,
+          isLoading: true,
+        },
+      };
+    case GET_TOKEN_SUCCESS:
+      return {
+        ...state,
+        lobby: {
+          ...state.lobby,
+          isLoading: false,
+          isLogin: true,
+        },
+      };
+    case GET_TOKEN_FAILURE:
+      return {
+        ...state,
+        lobby: {
+          ...state.lobby,
+          isLoading: false,
+        },
+      };
     case WORK_ON_PENDING:
     case WORK_OFF_PENDING:
       return {
