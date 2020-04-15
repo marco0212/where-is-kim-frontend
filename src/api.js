@@ -12,8 +12,7 @@ const getToggleLikeThreadUrl = (id) =>
 const getCommentThreadUrl = (id) =>
   `${WHERE_IS_KIM_BACK_URL}/api/thread/${id}/comment`;
 const getRecordUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/records`;
-const getInviteUrl = (id, email) =>
-  `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/invite`;
+const getInviteUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/invite`;
 const getUpdateAdminsUrl = (id) =>
   `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/admins`;
 const JWT_TEST = `${WHERE_IS_KIM_BACK_URL}/`;
@@ -190,7 +189,6 @@ export const updateAdminsAPI = (teamId, admins) => {
 
   return fetch(getUpdateAdminsUrl(teamId), options);
 };
-// export const updateAdmins
 
 export const testAPI = (token) => {
   const options = {

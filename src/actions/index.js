@@ -27,58 +27,48 @@ import {
 export const getTokenPending = () => ({ type: GET_TOKEN_PENDING });
 export const getTokenSuccess = () => ({ type: GET_TOKEN_SUCCESS });
 export const getTokenFailure = () => ({ type: GET_TOKEN_FAILURE });
-
 export const initializeUser = (user) => ({
   type: INITIALIZE_USER,
   payload: user,
 });
-
 export const initializeTeam = (team) => ({
   type: INITIALIZE_TEAM,
   payload: team,
 });
-
 export const registerTeamPending = () => ({ type: REGISTER_TEAM_PENDING });
 export const updateUserTeam = (team) => ({
   type: UPDATE_USER_TEAM,
   payload: team,
 });
 export const registerTeamFailure = () => ({ type: REGISTER_TEAM_FAILURE });
-
 export const workOnPending = () => ({ type: WORK_ON_PENDING });
 export const workOnSuccess = (userId) => ({
   type: WORK_ON_SUCCESS,
   payload: userId,
 });
 export const workOnFailure = () => ({ type: WORK_ON_FAILURE });
-
 export const workOffPending = () => ({ type: WORK_OFF_PENDING });
 export const workOffSuccess = (userId) => ({
   type: WORK_OFF_SUCCESS,
   payload: userId,
 });
 export const workOffFailure = () => ({ type: WORK_OFF_FAILURE });
-
 export const updateActiveUsers = (ids) => ({
   type: UPDATE_ACTIVE_USERS,
   payload: ids,
 });
-
 export const updateThreads = (threads) => ({
   type: UPDATE_THREADS,
   payload: threads,
 });
-
 export const updateCurrentPage = (page) => ({
   type: UPDATE_CURRENT_PAGE,
   payload: page,
 });
-
 export const updateRecords = (records) => ({
   type: UPDATE_RECORDS,
   payload: records,
 });
-
 export const sendInvitingMailPending = () => ({
   type: SEND_INVITING_MAIL_PENDING,
 });
@@ -88,7 +78,6 @@ export const sendInvitingMailSuccess = () => ({
 export const sendInvitingMailFailure = () => ({
   type: SEND_INVITING_MAIL_FAILURE,
 });
-
 export const updateThreadLikes = (id, likes) => ({
   type: UPDATE_THREAD_LIKES,
   payload: { id, likes },
