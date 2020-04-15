@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { Box } from "../Dashboard/Dashboard";
 import PieChart from "../../components/PieChart/PieChart";
-import BarChart from "../../components/BarChart/BarChart";
+import BarChart from "../../components/BarChart/Container";
 import HorBarchart from "../../components/HorBarchart/Container";
 
 export default function Analitics({ latingNumberPerEmployee, latePerDays }) {
