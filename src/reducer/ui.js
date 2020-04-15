@@ -11,7 +11,7 @@ import {
   GET_TOKEN_FAILURE,
 } from "../constants";
 
-const initialState = {
+export const initialState = {
   currentPage: "",
   lobby: {
     isLogin: false,
