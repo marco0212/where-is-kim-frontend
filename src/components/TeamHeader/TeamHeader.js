@@ -38,9 +38,6 @@ export default function TeamHeader({ teamName, currentPage }) {
               participants
             </Link>
           </li>
-          <li>
-            <Link to={`/team/${teamName}/admin/settings`}>settings</Link>
-          </li>
         </ul>
       </nav>
     </>
