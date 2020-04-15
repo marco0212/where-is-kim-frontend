@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Box } from "../Dashboard/Dashboard";
-import PieChart from "../../components/PieChart/PieChart";
+import PieChart from "../../components/PieChart/Container";
 import BarChart from "../../components/BarChart/Container";
 import HorBarchart from "../../components/HorBarchart/Container";
 

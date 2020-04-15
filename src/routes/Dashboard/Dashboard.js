@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ThreadList from "../../components/ThreadList/ThreadList";
-import PieChart from "../../components/PieChart/PieChart";
+import PieChart from "../../components/PieChart/Container";
 
 export default function Dashboard({
   threads,
