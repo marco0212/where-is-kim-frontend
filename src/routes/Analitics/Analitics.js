@@ -3,14 +3,14 @@ import styled from "styled-components";
 import { Box } from "../Dashboard/Dashboard";
 import PieChart from "../../components/PieChart/PieChart";
 import BarChart from "../../components/BarChart/BarChart";
-import LineChart from "../../components/LineChart/LineChart";
+import HorBarchart from "../../components/HorBarchart/Container";
 
 export default function Analitics({ latingNumberPerEmployee, latePerDays }) {
   return (
     <Wrapper>
       <TopBox>
-        <h3>전체 지각 횟수</h3>
-        <LineChart />
+        <h3>금주 팀원 별 근무시간</h3>
+        <HorBarchart />
       </TopBox>
       <Box>
         <h3>요일 별 지각 횟수</h3>

@@ -9,7 +9,13 @@ export default function BarChart({ records }) {
     const ctx = chart.current.getContext("2d");
     const labels = ["Mon", "Tue", "Wed", "Thu", "Fri"];
     const data = records;
-    const backgroundColor = data.map(() => randomColor());
+    const backgroundColor = data.map(() =>
+      randomColor({
+        luminosity: "bright",
+        format: "rgba",
+        alpha: 0.5,
+      })
+    );
 
     new Chart(ctx, {
       type: "bar",

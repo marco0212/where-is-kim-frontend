@@ -3,23 +3,31 @@ import Chart from "chart.js";
 import randomColor from "randomcolor";
 import styled from "styled-components";
 
-export default function LineChart() {
+export default function HorBarchart({ records }) {
   const chart = useRef(null);
+  const data = records.map((record) => record.workingTime);
+  const labels = records.map((record) => record.username);
+  const backgroundColor = data.map(() =>
+    randomColor({
+      luminosity: "bright",
+      format: "rgba",
+      alpha: 0.5,
+    })
+  );
 
   useEffect(() => {
     const ctx = chart.current.getContext("2d");
     ctx.height = 300;
-    const data = [1, 6, 0, 6, 7];
 
     new Chart(ctx, {
-      type: "line",
+      type: "horizontalBar",
       data: {
-        labels: ["Mon", "Tue", "Wed", "Thu", "Fri"],
+        labels,
         datasets: [
           {
-            borderColor: randomColor(),
-            fill: 0,
-            lineTension: 0,
+            backgroundColor,
+            borderColor: "#666",
+            borderWidth: 3,
             data,
           },
         ],
@@ -30,7 +38,7 @@ export default function LineChart() {
           display: false,
         },
         scales: {
-          yAxes: [
+          xAxes: [
             {
               ticks: {
                 beginAtZero: true,
@@ -42,7 +50,7 @@ export default function LineChart() {
         labels: false,
       },
     });
-  }, []);
+  }, [data, labels, backgroundColor]);
 
   return (
     <Wrapper>
