@@ -24,7 +24,6 @@ export default function RegisterTeam({
             controller={teamName}
             placeholder="Type your team name"
           />
-          <input type="file" ref={fileInput} />
           <FormField
             title="Latitude"
             type="text"
@@ -43,6 +42,10 @@ export default function RegisterTeam({
             type="time"
             controller={workOffTime}
           />
+          <legend style={{ fontSize: "16px", margin: "21px 0 10px" }}>
+            Team Profile Picture
+          </legend>
+          <input type="file" ref={fileInput} />
           <ButtonWrap>
             <button>Resigter</button>
             <Link to="/">Back</Link>

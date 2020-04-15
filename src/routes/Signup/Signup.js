@@ -16,7 +16,6 @@ export default function Signup({
       <div>
         <h3>RESISTER</h3>
         <form onSubmit={onSubmit}>
-          <input type="file" ref={fileInput} />
           <FormField
             title="Name"
             type="text"
@@ -35,6 +34,10 @@ export default function Signup({
             controller={password}
             placeholder="Password"
           />
+          <legend style={{ fontSize: "16px", margin: "21px 0 10px" }}>
+            Profile Picture
+          </legend>
+          <input type="file" ref={fileInput} />
           <ButtonWrap>
             <button>Resigter</button>
             <Link to="/">Back</Link>
