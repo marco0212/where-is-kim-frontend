@@ -10,7 +10,7 @@ import {
 } from "../constants";
 import moment from "moment";
 
-const initialState = {
+export const initialState = {
   id: "",
   displayName: "",
   location: {},
@@ -18,8 +18,6 @@ const initialState = {
   allpartIds: [],
   allThreadIds: [],
   threadById: {},
-  allThreadDate: [],
-  threadsByDate: {},
   recordById: {},
   allRecordIds: [],
   onWorkingUser: [],
