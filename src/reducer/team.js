@@ -66,7 +66,6 @@ export default function (state = initialState, action) {
         return acc;
       }, {});
       const allRecordIds = records.map((record) => record._id);
-
       const onWorkingUser = [];
       const offWorkingUser = [];
 
@@ -98,12 +97,14 @@ export default function (state = initialState, action) {
         offWorkingUser,
         thumbnail,
       };
+
     case WORK_ON_SUCCESS: {
       return {
         ...state,
         onWorkingUser: [...state.onWorkingUser, action.payload],
       };
     }
+
     case WORK_OFF_SUCCESS: {
       const userId = action.payload;
       const onWorkingUser = state.onWorkingUser.slice();
@@ -116,14 +117,11 @@ export default function (state = initialState, action) {
         offWorkingUser: [...state.offWorkingUser, userId],
       };
     }
+
     case UPDATE_ACTIVE_USERS:
       return {
         ...state,
         connectedUser: [...new Set(action.payload)],
-      };
-    default:
-      return {
-        ...state,
       };
 
     case UPDATE_THREADS: {
@@ -149,6 +147,7 @@ export default function (state = initialState, action) {
         threadById,
       };
     }
+
     case UPDATE_RECORDS: {
       const records = action.payload;
       const recordById = records.reduce((acc, record) => {
@@ -177,6 +176,7 @@ export default function (state = initialState, action) {
         },
       };
     }
+
     case UPDATE_THREAD_COMMENT: {
       const { id, comments } = action.payload;
       return {
@@ -190,5 +190,10 @@ export default function (state = initialState, action) {
         },
       };
     }
+
+    default:
+      return {
+        ...state,
+      };
   }
 }
