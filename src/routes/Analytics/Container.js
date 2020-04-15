@@ -1,20 +1,20 @@
 import React, { useEffect } from "react";
 import { connect } from "react-redux";
-import Analitics from "./Analitics";
+import Analytics from "./Analytics";
 import { updateCurrentPage } from "../../actions";
 import moment from "moment";
 
-function AnaliticsContainer({
+function AnalyticsContainer({
   latingNumberPerEmployee,
   latePerDays,
   updateCurrentPage,
 }) {
   useEffect(() => {
-    updateCurrentPage("Analitics");
+    updateCurrentPage("Analytics");
   }, [updateCurrentPage]);
 
   return (
-    <Analitics
+    <Analytics
       latingNumberPerEmployee={latingNumberPerEmployee}
       latePerDays={latePerDays}
     />
@@ -59,4 +59,4 @@ const mapDispatchToProps = (dispatch) => ({
   updateCurrentPage: (page) => dispatch(updateCurrentPage(page)),
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(AnaliticsContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(AnalyticsContainer);

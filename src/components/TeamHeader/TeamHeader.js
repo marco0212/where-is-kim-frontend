@@ -31,7 +31,7 @@ export default function TeamHeader({ teamName, currentPage }) {
             <Link to={`/team/${teamName}/admin`}>Dashboard</Link>
           </li>
           <li>
-            <Link to={`/team/${teamName}/admin/analitics`}>Analitics</Link>
+            <Link to={`/team/${teamName}/admin/analytics`}>Analytics</Link>
           </li>
           <li>
             <Link to={`/team/${teamName}/admin/participants`}>
