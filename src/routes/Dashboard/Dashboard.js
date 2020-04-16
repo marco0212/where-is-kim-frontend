@@ -41,7 +41,7 @@ export default function Dashboard({
         </div>
       </ElseBox>
       <ElseBox>
-        <h3>이번 달 지각 왕</h3>
+        <h3>이번 주 지각 왕</h3>
         <div>
           <div>
             <ImageWrap>
