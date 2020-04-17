@@ -8,7 +8,7 @@ import heroPoster from "../../assets/hero-poster.jpg";
 import heroVideo from "../../assets/hero-video.mp4";
 import Logo from "../../components/Logo/Logo";
 
-export default function Lobby({ isLogin, teams, login }) {
+export default function Lobby({ isLogin, teams, login, logout }) {
   return (
     <>
       <Hero>
@@ -34,7 +34,7 @@ export default function Lobby({ isLogin, teams, login }) {
               <TeamList teams={teams} />
               <TeamButtonWrap>
                 <Link to="/team/new">Create Team</Link>
-                <button>Logout</button>
+                <button onClick={logout}>Logout</button>
               </TeamButtonWrap>
             </>
           ) : (

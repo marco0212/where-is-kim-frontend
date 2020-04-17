@@ -9,6 +9,7 @@ import {
   GET_TOKEN_PENDING,
   GET_TOKEN_SUCCESS,
   GET_TOKEN_FAILURE,
+  LOGOUT,
 } from "../constants";
 
 export const initialState = {
@@ -47,6 +48,13 @@ export default function (state = initialState, action) {
         lobby: {
           ...state.lobby,
           isLoading: false,
+        },
+      };
+    case LOGOUT:
+      return {
+        ...state,
+        lobby: {
+          isLogin: false,
         },
       };
     case WORK_ON_PENDING:
