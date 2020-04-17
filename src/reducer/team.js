@@ -183,7 +183,7 @@ export default function (state = initialState, action) {
           ...state.threadById,
           [id]: {
             ...state.threadById[id],
-            comments: state.threadById[id].comments.concat(comments),
+            comments,
           },
         },
       };
