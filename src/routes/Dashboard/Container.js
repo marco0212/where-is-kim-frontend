@@ -85,7 +85,7 @@ const mapStateToProps = (state) => {
     onWorkingUserCount: state.team.onWorkingUser.length,
     offWorkingUserCount: state.team.offWorkingUser.length,
     latingNumberPerEmployee,
-    mostLater,
+    mostLater: mostLater ? mostLater : {},
   };
 };
 const mapDispatchToProps = (dispatch) => ({
