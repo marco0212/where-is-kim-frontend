@@ -1,6 +1,6 @@
 import io from "socket.io-client";
 
-export const socket = io.connect("http://api.where-is-kim.site");
+export const socket = io.connect("https://api.where-is-kim.site");
 
 export function emitJoinTeam(username, teamName) {
   socket.emit("join team", username, teamName);
