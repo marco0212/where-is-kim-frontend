@@ -4,12 +4,15 @@ import LoginForm from "../../components/LoginForm/Container";
 import TeamList from "../../components/TeamList/TeamList";
 import { ButtonWrap } from "../../components/LoginForm/LoginForm";
 import { Link } from "react-router-dom";
+import logo from "../../assets/logo.png";
 
 export default function Lobby({ isLogin, teams, login }) {
   return (
     <Wrapper>
       <WelcomeBox>
-        <h1>김대리 어딨어?</h1>
+        <h1>
+          <img src={logo} alt="김대리 어딨어?" />
+        </h1>
         <p>
           A helper function to generate a special StyledComponent that handles
           global styles. Normally, styled components are automatically scoped to
@@ -46,6 +49,12 @@ const Wrapper = styled.div`
 const WelcomeBox = styled.div`
   width: 45%;
   margin-right: 30px;
+  h1 {
+    & img {
+      width: 280px;
+    }
+    margin-bottom: 21px;
+  }
 `;
 const LoginBox = styled.div`
   display: flex;
