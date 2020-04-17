@@ -19,14 +19,14 @@ const mapStateToProps = (state) => {
   const allThreadDate = threads.reduce((acc, thread) => {
     const date = moment(thread.createdAt).format("YYYY-MM-DD");
     if (acc.indexOf(date) === -1) {
-      acc.push(date);
+      acc.unshift(date);
     }
     return acc;
   }, []);
   const threadsByDate = threads.reduce((acc, thread) => {
     const date = moment(thread.createdAt).format("YYYY-MM-DD");
     if (acc[date]) {
-      acc[date].push(thread);
+      acc[date].unshift(thread);
     } else {
       acc[date] = [thread];
     }

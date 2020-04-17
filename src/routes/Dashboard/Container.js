@@ -33,7 +33,7 @@ const mapStateToProps = (state) => {
   const threads = state.team.allThreadIds.reduce((acc, id) => {
     const thread = state.team.threadById[id];
     if (moment(thread.createdAt).format("YYYY-MM-DD") === today) {
-      acc.push(thread);
+      acc.unshift(thread);
     }
     return acc;
   }, []);
