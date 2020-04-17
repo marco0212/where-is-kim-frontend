@@ -86,6 +86,7 @@ const TeamButtonWrap = styled(ButtonWrap)`
 `;
 const Hero = styled.div`
   position: absolute;
+  width: 1280px;
   top: 0;
   bottom: 0;
   left: 0;
