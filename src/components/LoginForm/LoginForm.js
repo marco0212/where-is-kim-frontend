@@ -6,8 +6,18 @@ import styled from "styled-components";
 export default function LoginForm({ onSubmit, email, password }) {
   return (
     <form onSubmit={onSubmit}>
-      <FormField title="Email" type="email" controller={email} />
-      <FormField title="Password" type="password" controller={password} />
+      <FormField
+        title="Email"
+        type="email"
+        controller={email}
+        placeholder="Account Email"
+      />
+      <FormField
+        title="Password"
+        type="password"
+        controller={password}
+        placeholder="Password"
+      />
       <ButtonWrap>
         <button>Login</button>
         <Link to="/signup">Signup</Link>
