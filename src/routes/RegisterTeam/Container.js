@@ -12,6 +12,14 @@ function RegisterTeamContainer({ userId, history, updateUserTeam }) {
   const workOnTime = useInput("09:00");
   const workOffTime = useInput("18:00");
   const fileInput = useRef(null);
+  const getCurrentLocation = (e) => {
+    e.preventDefault();
+    navigator.geolocation.getCurrentPosition((pos) => {
+      const { coords } = pos;
+      latitude.setValue(coords.latitude);
+      longitude.setValue(coords.longitude);
+    });
+  };
   const onSubmit = async (e) => {
     e.preventDefault();
     const thumbnail = fileInput.current.files[0];
@@ -42,6 +50,7 @@ function RegisterTeamContainer({ userId, history, updateUserTeam }) {
       workOffTime={workOffTime}
       fileInput={fileInput}
       onSubmit={onSubmit}
+      OnlocaButtonClick={getCurrentLocation}
     />
   );
 }
