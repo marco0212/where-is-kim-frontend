@@ -152,7 +152,6 @@ const ThreadButtonWrap = styled.button`
   }
 `;
 const CommentsList = styled.ul`
-  margin-bottom: 20px;
   & li {
     display: flex;
     font-size: 15px;

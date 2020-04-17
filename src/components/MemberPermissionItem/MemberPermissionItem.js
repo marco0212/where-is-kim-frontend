@@ -11,11 +11,11 @@ export default function MemberPermissionItem({
       <td>{username}</td>
       <td>
         <select
-          defaultValue={isAdmin ? "admin" : "normal"}
+          defaultValue={isAdmin ? "admin" : "member"}
           onChange={onChange.bind(null, id)}
         >
           <option value="admin">admin</option>
-          <option value="normal">normal</option>
+          <option value="member">member</option>
         </select>
       </td>
     </tr>

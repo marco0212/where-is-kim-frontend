@@ -9,15 +9,15 @@ export default function Analitics({ latingNumberPerEmployee, latePerDays }) {
   return (
     <Wrapper>
       <TopBox>
-        <h3>금주 팀원 별 근무시간</h3>
+        <h3>금주 팀원별 근무시간</h3>
         <HorBarchart />
       </TopBox>
       <Box>
-        <h3>요일 별 지각 횟수</h3>
+        <h3>요일별 지각 횟수</h3>
         <BarChart records={latePerDays} />
       </Box>
       <Box>
-        <h3>직원 별 지각 횟수</h3>
+        <h3>직원별 지각 횟수</h3>
         <PieChart records={latingNumberPerEmployee} />
       </Box>
     </Wrapper>
