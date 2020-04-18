@@ -23,6 +23,7 @@ const AfterLogin = () => {
       <Route exact path="/" component={Lobby} />
       <Route path="/team/new" component={RegisterTeam} />
       <Route path="/team/:name" component={Team} />
+      <Route path="/verify/:token" component={Confirm} />
       <Redirect to="/" />
     </Switch>
   );
