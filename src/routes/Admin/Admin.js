@@ -16,7 +16,17 @@ const Verified = () => {
 };
 
 const Unverified = () => {
-  return <Button to="/">허튼 짓하지 말아요..</Button>;
+  return (
+    <Inner>
+      <p>
+        접근이 불가능한 페이지 입니다. <br />
+        허튼 짓하지 마세요.
+      </p>
+      <p>
+        <Button to="/">홈으로</Button>
+      </p>
+    </Inner>
+  );
 };
 
 export default function Admin({ isAdmin }) {
@@ -38,4 +48,16 @@ const Button = styled(Link)`
   border-radius: 4px;
   text-align: center;
   text-transform: uppercase;
+`;
+const Inner = styled.div`
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding-top: 150px;
+  & p {
+    margin-bottom: 21px;
+  }
 `;
