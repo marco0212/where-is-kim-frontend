@@ -80,7 +80,7 @@ const Wrapper = styled.div`
   flex-direction: column;
   height: 100%;
   position: relative;
-  padding: 15px 30px 0;
+  padding: 30px 30px 0;
 `;
 const Map = styled.div`
   flex: 1;
