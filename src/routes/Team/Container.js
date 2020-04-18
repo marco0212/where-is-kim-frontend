@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Team from "./Team";
 import { connect } from "react-redux";
 import { joinTeamAPI } from "../../api";
-import { initializeTeam, updateThreads } from "../../actions";
+import { initializeTeam, updateThreads, updateIsAdmin } from "../../actions";
 import { emitJoinTeam, emitLeaveTeam, socket } from "../../socket";
 
 function TeamContainer({
@@ -16,6 +16,8 @@ function TeamContainer({
   initializeTeam,
   updateThreads,
   thumbnail,
+  isAdmin,
+  updateIsAdmin,
 }) {
   const { name } = match.params;
 
@@ -37,19 +39,20 @@ function TeamContainer({
   useEffect(() => {
     async function joinTeam() {
       const response = await joinTeamAPI(name, userId);
-      const { result, team } = await response.json();
+      const { result, team, isAdmin } = await response.json();
 
       if (result !== "ok") {
         return history.push("/");
       }
 
       initializeTeam(team);
+      updateIsAdmin(isAdmin);
       emitJoinTeam(userId, name);
     }
 
     joinTeam();
     return emitLeaveTeam;
-  }, [name, userId, history, initializeTeam]);
+  }, [name, userId, history, initializeTeam, updateIsAdmin]);
 
   return (
     <Team
@@ -59,6 +62,7 @@ function TeamContainer({
       participants={participants}
       threads={threads}
       thumbnail={thumbnail}
+      isAdmin={isAdmin}
     />
   );
 }
@@ -69,10 +73,12 @@ const mapStateToProps = (state) => ({
   currentPage: state.ui.currentPage,
   participants: state.team.allpartIds.map((id) => state.team.partById[id]),
   thumbnail: state.team.thumbnail,
+  isAdmin: state.ui.admin.isAdmin,
 });
 const mapDispatchToProps = (dispatch) => ({
   initializeTeam: (team) => dispatch(initializeTeam(team)),
   updateThreads: (threads) => dispatch(updateThreads(threads)),
+  updateIsAdmin: (value) => dispatch(updateIsAdmin(value)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(TeamContainer);

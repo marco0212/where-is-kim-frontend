@@ -23,6 +23,7 @@ import {
   UPDATE_THREAD_LIKES,
   UPDATE_THREAD_COMMENT,
   LOGOUT,
+  UPDATE_IS_ADMIN,
 } from "../constants";
 
 export const getTokenPending = () => ({ type: GET_TOKEN_PENDING });
@@ -89,4 +90,8 @@ export const updateThreadComments = (id, comments) => ({
 });
 export const logout = () => ({
   type: LOGOUT,
+});
+export const updateIsAdmin = (bool) => ({
+  type: UPDATE_IS_ADMIN,
+  payload: bool,
 });

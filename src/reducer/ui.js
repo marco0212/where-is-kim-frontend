@@ -10,6 +10,7 @@ import {
   GET_TOKEN_SUCCESS,
   GET_TOKEN_FAILURE,
   LOGOUT,
+  UPDATE_IS_ADMIN,
 } from "../constants";
 
 export const initialState = {
@@ -21,10 +22,20 @@ export const initialState = {
   record: {
     isLoading: false,
   },
+  admin: {
+    isAdmin: false,
+  },
 };
 
 export default function (state = initialState, action) {
   switch (action.type) {
+    case UPDATE_IS_ADMIN:
+      return {
+        ...state,
+        admin: {
+          isAdmin: action.payload,
+        },
+      };
     case GET_TOKEN_PENDING:
       return {
         ...state,

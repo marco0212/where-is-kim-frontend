@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { FaTimes, FaBars } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default function TeamHeader({ teamName, currentPage }) {
+export default function TeamHeader({ teamName, currentPage, isAdmin }) {
   return (
     <>
       <Wrapper>
@@ -27,17 +27,21 @@ export default function TeamHeader({ teamName, currentPage }) {
           <li>
             <Link to={`/team/${teamName}/record`}>Record</Link>
           </li>
-          <li>
-            <Link to={`/team/${teamName}/admin`}>Dashboard</Link>
-          </li>
-          <li>
-            <Link to={`/team/${teamName}/admin/analytics`}>Analytics</Link>
-          </li>
-          <li>
-            <Link to={`/team/${teamName}/admin/participants`}>
-              participants
-            </Link>
-          </li>
+          {isAdmin && (
+            <>
+              <li>
+                <Link to={`/team/${teamName}/admin`}>Dashboard</Link>
+              </li>
+              <li>
+                <Link to={`/team/${teamName}/admin/analytics`}>Analytics</Link>
+              </li>
+              <li>
+                <Link to={`/team/${teamName}/admin/participants`}>
+                  participants
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </>
