@@ -1,5 +1,7 @@
 # Where is Kim
 
+[https://www.where-is-kim.site](https://www.where-is-kim.site/#/)
+
 ## Introduction
 
 `김대리 어딨어` 는 사내 출결 관리 어플리케이션입니다. 회사의 관리자 입장에서 직원들의 출결을 쉽게 관리할 수 없을까? 라는 생각으로 접근하였고 전 직장에서의 경험을 바탕으로 기능들을 기획/구현하게 되었습니다.
