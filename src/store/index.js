@@ -11,9 +11,14 @@ const persistConfig = {
 };
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
+const middlewares = [thunk];
+
+if (process.env.NODE_ENV === 'development') {
+  middlewares.push(logger);
+}
 
 export default () => {
-  let store = createStore(persistedReducer, applyMiddleware(thunk, logger));
-  let persistor = persistStore(store);
+  const store = createStore(persistedReducer, applyMiddleware(...middlewares));
+  const persistor = persistStore(store);
   return { store, persistor };
 };

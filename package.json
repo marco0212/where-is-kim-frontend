@@ -20,12 +20,12 @@
     "styled-reset": "^4.1.2"
   },
   "devDependencies": {
-    "redux-logger": "^3.0.6",
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "@types/react-icons": "^3.0.0",
-    "cypress": "^4.4.0"
+    "cypress": "^4.4.0",
+    "redux-logger": "^3.0.6"
   },
   "scripts": {
     "start": "react-scripts start",
