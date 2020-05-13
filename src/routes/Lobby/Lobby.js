@@ -21,11 +21,7 @@ export default function Lobby({ isLogin, teams, login, logout }) {
           <h1>
             <Logo /> 김대리 어딨어
           </h1>
-          <p>
-            A helper function to generate a special StyledComponent that handles
-            global styles. Normally, styled components are automatically scoped
-            to a local CSS class and therefore isolated from other components
-          </p>
+          <p>김대리 어딨어와 함께 누구보다 스마트한 출결관리를 시작하세요!</p>
         </WelcomeBox>
         <LoginBox>
           {isLogin ? (
@@ -67,6 +63,9 @@ const WelcomeBox = styled.div`
     font-size: 30px;
     font-weight: 900;
     margin-bottom: 21px;
+  }
+  p {
+    font-size: 18px;
   }
 `;
 const LoginBox = styled.div`
