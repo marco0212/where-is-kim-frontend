@@ -1,21 +1,20 @@
 const WHERE_IS_KIM_BACK_URL = "https://api.where-is-kim.site";
-const GET_TOKEN = `${WHERE_IS_KIM_BACK_URL}/api/auth/login`;
-const SIGNUP = `${WHERE_IS_KIM_BACK_URL}/api/auth/signup`;
-const REGISTER_TEAM = `${WHERE_IS_KIM_BACK_URL}/api/team/new`;
-const VERIFY_USER = `${WHERE_IS_KIM_BACK_URL}/api/team/verify`;
+const GET_TOKEN = `${WHERE_IS_KIM_BACK_URL}/auth/login`;
+const SIGNUP = `${WHERE_IS_KIM_BACK_URL}/auth/signup`;
+const REGISTER_TEAM = `${WHERE_IS_KIM_BACK_URL}/team/new`;
+const VERIFY_USER = `${WHERE_IS_KIM_BACK_URL}/team/verify`;
 const getTeamJoinUrl = (name) =>
-  `${WHERE_IS_KIM_BACK_URL}/api/team/${name}/join`;
-const getWorkOnUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/onWork`;
-const getWorkOffUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/offWork`;
+  `${WHERE_IS_KIM_BACK_URL}/team/${name}/join`;
+const getWorkOnUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/team/${id}/onWork`;
+const getWorkOffUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/team/${id}/offWork`;
 const getToggleLikeThreadUrl = (id) =>
-  `${WHERE_IS_KIM_BACK_URL}/api/thread/${id}/like`;
+  `${WHERE_IS_KIM_BACK_URL}/thread/${id}/like`;
 const getCommentThreadUrl = (id) =>
-  `${WHERE_IS_KIM_BACK_URL}/api/thread/${id}/comment`;
-const getRecordUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/records`;
-const getInviteUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/invite`;
+  `${WHERE_IS_KIM_BACK_URL}/thread/${id}/comment`;
+const getRecordUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/team/${id}/records`;
+const getInviteUrl = (id) => `${WHERE_IS_KIM_BACK_URL}/team/${id}/invite`;
 const getUpdateAdminsUrl = (id) =>
-  `${WHERE_IS_KIM_BACK_URL}/api/team/${id}/admins`;
-const JWT_TEST = `${WHERE_IS_KIM_BACK_URL}/`;
+  `${WHERE_IS_KIM_BACK_URL}/team/${id}/admins`;
 
 export const getTokenAPI = (email, password) => {
   const options = {
@@ -64,7 +63,11 @@ export const registerTeamAPI = (
   data.append("workOffTime", workOffTime);
   data.append("file", thumbnail);
 
+  const token = localStorage.token;
   const options = {
+    headers: {
+      "Authorization": `Bearer ${token}`
+    },
     method: "POST",
     body: data,
   };
@@ -73,13 +76,21 @@ export const registerTeamAPI = (
 };
 
 export const verifyAPI = (token) => {
-  const options = { method: "POST" };
+  const options = {
+    headers: {
+      "Authorization": `Bearer ${token}`,
+    },
+    method: "POST"
+  };
+
   return fetch(`${VERIFY_USER}?token=${token}`, options);
 };
 
 export const joinTeamAPI = (teamName, userId) => {
+  const token = localStorage.token;
   const options = {
     headers: {
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     method: "POST",
@@ -92,8 +103,10 @@ export const joinTeamAPI = (teamName, userId) => {
 };
 
 export const workOnAPI = (teamId, userId) => {
+  const token = localStorage.token;
   const options = {
     headers: {
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     method: "POST",
@@ -106,8 +119,10 @@ export const workOnAPI = (teamId, userId) => {
 };
 
 export const workOffAPI = (teamId, userId) => {
+  const token = localStorage.token;
   const options = {
     headers: {
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     method: "POST",
@@ -120,8 +135,10 @@ export const workOffAPI = (teamId, userId) => {
 };
 
 export const toggleLikeAPI = (threadId, userId) => {
+  const token = localStorage.token;
   const options = {
     headers: {
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     method: "POST",
@@ -134,8 +151,10 @@ export const toggleLikeAPI = (threadId, userId) => {
 };
 
 export const addComment = (commentId, userId, text) => {
+  const token = localStorage.token;
   const options = {
     headers: {
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     method: "POST",
@@ -149,8 +168,10 @@ export const addComment = (commentId, userId, text) => {
 };
 
 export const getRecordAPI = (teamId, userId) => {
+  const token = localStorage.token;
   const options = {
     headers: {
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     method: "POST",
@@ -163,8 +184,10 @@ export const getRecordAPI = (teamId, userId) => {
 };
 
 export const inviteUserAPI = (teamId, email) => {
+  const token = localStorage.token;
   const options = {
     headers: {
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     method: "POST",
@@ -177,8 +200,10 @@ export const inviteUserAPI = (teamId, email) => {
 };
 
 export const updateAdminsAPI = (teamId, admins) => {
+  const token = localStorage.token;
   const options = {
     headers: {
+      "Authorization": `Bearer ${token}`,
       "Content-Type": "application/json",
     },
     method: "PUT",
@@ -188,15 +213,4 @@ export const updateAdminsAPI = (teamId, admins) => {
   };
 
   return fetch(getUpdateAdminsUrl(teamId), options);
-};
-
-export const testAPI = (token) => {
-  const options = {
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    method: "POST",
-  };
-
-  return fetch(JWT_TEST, options);
 };
