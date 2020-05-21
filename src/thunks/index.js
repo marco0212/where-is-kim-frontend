@@ -22,7 +22,7 @@ export const getToken = (email, password) => async (dispatch) => {
 
     const response = await getTokenAPI(email, password);
     const {
-      result: { token, user },
+      result: { token, loggedInUser: user },
     } = await response.json();
 
     if (token) {
