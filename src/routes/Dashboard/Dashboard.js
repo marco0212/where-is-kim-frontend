@@ -34,8 +34,8 @@ export default function Dashboard({
         <div>
           <PieChart records={latingNumberPerEmployee} />
           <ChartLegend>
-            {latingNumberPerEmployee.slice(0, 3).map((employee) => {
-              return <li>{employee.name}</li>;
+            {latingNumberPerEmployee.slice(0, 3).map((employee, index) => {
+              return <li key={index}>{employee.name}</li>;
             })}
           </ChartLegend>
         </div>
